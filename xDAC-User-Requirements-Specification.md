@@ -77,37 +77,37 @@ xDAC Platform will help entrepreneurs to create an automated company without geo
 # 3 Specific Requirements
 
 **What do business owners want?**
-a) Fast and easy company registration. 
-b) Company free from financial institutions.
-c) Company free from jurisdiction limitations.
-c) Instant payments with low fees.
-d) Control over company data. 
-e) Simple team management.
+- Fast and easy company registration. 
+-  Company free from financial institutions.
+-  Company free from jurisdiction limitations.
+-  Instant payments with low fees.
+-  Control over company data. 
+-  Simple team management tools.
 
 ## 3.1	Product requirements
 
-### Company registration
+### 3.1.1 Company registration
 
 The company can be created via computer or a smartphone. End-user selects company name, domain slug and enters email for verification. After the email verification company smart contract is created where owners can send initial capital. The company is free for registration by anyone until it reaches minimum investment of 100 XDAC. The company is locked for further investments to avoid 51% attack and all new investments need to be approved by owner. 
 
-### Company Management and Settings
+### 3.1.2 Company Management and Settings
 
-1.  Public Profile** - company owners can edit their public profile that includes a logo, company description, link public articles or videos.
-2.  Bylaws** - define a corporation's purpose, how it will operate, and the duties and responsibilities of the owners and managers. They also let owners specify ownership rights, select officers and directors, plan meetings, and establish how to remove officers or directors. 
-3.  Company Assets** - list of resources or things of value that are owned by a company.
-4.  Voting** - the company can vote on platform proposals.
-5.  Partners** - owners can add or remove partners.
-6.  Transfer Ownership** - the company can be transferred to new owner.
-7.  Liability Fund** - set threshold and payments to liability fund.
+1.  **Public Profile** - company owners can edit their public profile that includes a logo, company description, link public articles or videos.
+2.   **Bylaws** - define a corporation's purpose, how it will operate, and the duties and responsibilities of the owners and managers. They also let owners specify ownership rights, select officers and directors, plan meetings, and establish how to remove officers or directors. 
+3.   **Company Assets** - list of resources or things of value that are owned by a company.
+4.   **Voting** - the company can vote on platform proposals.
+5.   **Partners** - owners can add or remove partners.
+6.   **Transfer Ownership** - the company can be transferred to new owner.
+7.   **Liability Fund** - set threshold and payments to liability fund.
 
-### Team Management
+### 3.1.3 Team Management
 
-1.  Structure & Ratings** - manage a team and assign a position and permissions to each team member. The team will be displayed graphically in company structure chart.
-2.  Hire Team Member** - publish available position in company team.
+1.   **Structure & Ratings** - manage a team and assign a position and permissions to each team member. The team will be displayed graphically in company structure chart.
+2.   **Hire Team Member** - publish available position in company team.
 
-### Project Management
-1.  Create Project** - start a new project and assign tasks to a team member. Each task has a specific amount for completion in XDAC and project displays whole project budget.
-2.  List of Projects and Tasks** - Display all pending or prior projects and tasks with actual spending in XDAC. 
+### 3.1.4 Project Management
+1.   **Create Project** - start a new project and assign tasks to a team member. Each task has a specific amount for completion in XDAC and project displays whole project budget.
+2.   **List of Projects and Tasks** - Display all pending or prior projects and tasks with actual spending in XDAC. 
 
 
 
