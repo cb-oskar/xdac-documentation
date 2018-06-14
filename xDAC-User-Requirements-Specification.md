@@ -93,6 +93,8 @@ The company can be created via computer or a smartphone. End-user selects compan
 
 ![xDAC new company flowchart](/images/xDAC-company-registration-flowchart.jpg)
 
+Company registration flowchart.
+
 ### 3.1.2 Company Dashboard
 1.  **Dashboard** - contains pending tasks, pending proposals, wallet and liability fund balances, team and company ratings.
 
