@@ -83,12 +83,15 @@ xDAC Platform will help entrepreneurs to create an automated company without geo
 -  Instant payments with low fees.
 -  Control over company data. 
 -  Simple team management tools.
+-  Simple fundraising tools.
 
 ## 3.1	Product requirements
 
 ### 3.1.1 Company registration
 
 The company can be created via computer or a smartphone. End-user selects company name, domain slug and enters email for verification. After the email verification company smart contract is created where owners can send initial capital. The company is free for registration by anyone until it reaches minimum investment of 100 XDAC. The company is locked for further investments to avoid 51% attack and all new investments need to be approved by owner. 
+
+![xDAC new company flowchart](/images/xDAC-company-registration-flowchart.jpg)
 
 ### 3.1.2 Company Dashboard
 1.  **Dashboard** - contains pending tasks, pending proposals, wallet and liability fund balances, team and company ratings.
@@ -119,7 +122,7 @@ The company can be created via computer or a smartphone. End-user selects compan
 ### 3.1.7 Fundraising 
 1.   **Tokens** - create new token, list of existing company tokens.
 2.   **Distribute** - distribute company tokens to investors.
-3.   **Start ICO** - display token sale on your public profile page and let investors purchase your tokens.
+3.   **Start ICO** - display token sale on company public profile page and let investors purchase your tokens.
 
 
 
