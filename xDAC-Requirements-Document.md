@@ -23,18 +23,19 @@ RD1 | WP001|xDAC Whitepaper| 1.0.8
 
 Tag | Description
 --- | -----------
+AA | Autonomous Agent (Bot, robot, AI, smart applications)
+DAC| Decentralized autonomous company
+DRB | Dispute Representative Board
+Initial Capital | The initial capital is amount of XDAC to start company and distribute company ownership among owners. 1 XDAC is one vote in the company. If company has multiple partners, they can participate in the company by sending XDAC tokens from a different wallet addresses in an amount that represents their stake.
+Performance Rating | It is a mechanism that allows for an automated rating based on tracking work ethic and delivering tasks on time. Each task will be rated between 0 and 1 (0 means task not finished, not delivered, or not paid on time) whereas (1 means task was finished and payment initiated). 
+PR | Product Requirements
 RD | Requirements Document
 UN | User Needs
 UR | User Requirements
-PR | Product Requirements
-DAC| Decentralized autonomous company
-AA | Autonomous Agent (Bot, robot, AI, smart applications)
-xDAC Company| xDAC is a DAC created and operated on xDAC Platform by one or multiple human or autonomous agent owners or a mixture of both that share a common purpose and unites in order to achieve specific, declared goals.
-xDAC Platform | An xDAC platform takes full advantage of decentralized ledger technology and lets anyone create and manage a company without the limitations of geography.
 XDAC | Platform Currency. XDAC will be used for: company creation, merchant payments, pay team members (payrolls), liability fund, dispute resolutions, profit distribution.
+xDAC Company| xDAC is a DAC created and operated on xDAC Platform by one or multiple human or autonomous agent owners or a mixture of both that share a common purpose and unites in order to achieve specific, declared goals.
 xDAC Liability Fund | An xDAC Liability Fund is coverage in case the xDAC's debts or liabilities exceed a certain debt-to-equity ratio. It is calculated as a percentage of received payments stored in a separate wallet until certain threshold is reached. Liability fund is not accessible to owners during the company's existence and is available for transfer 90 days after the company is ceased or transferred to new owner. 
-Initial Capital | The initial capital is amount of XDAC to start company and distribute company ownership among owners. 1 XDAC is one vote in the company. If company has multiple partners, they can participate in the company by sending XDAC tokens from a different wallet addresses in an amount that represents their stake.
-Performance Rating | It is a mechanism that allows for an automated rating based on tracking work ethic and delivering tasks on time. Each task will be rated between 0 and 1 (0 means task not finished, not delivered, or not paid on time) whereas (1 means task was finished and payment initiated). 
+xDAC Platform | An xDAC platform takes full advantage of decentralized ledger technology and lets anyone create and manage a company without the limitations of geography.
 
 # 2 User Needs and User Requirements
 
@@ -78,7 +79,7 @@ UR-1500 | UN-0700 | Voting | Owners can submit new proposals and vote on existin
 
 # 3 Product Requirements
 
-xDAC is a self-governed platform for creating and managing decentralized autonomous companies. The xDAC company is a public record about the entity on a distributed ledger accessible and verifiable by everyone. 
+xDAC is a self-governed platform for creating and managing decentralized autonomous companies. The xDAC company is a public record about the entity on a distributed ledger accessible and verifiable by anyone. 
 
 ## 3.1 Product Requirements Description
 
@@ -86,11 +87,20 @@ PR ID | UR ID | Product Requirement  | Priority | Description
 ----- | ----- | -------------------- | -------- | -----------
 PR-0100 | UR-0100 | Company registration | M | Company registration via a web browser. Store company name, domain, owner's email on the distributed ledger. After email verification XDAC wallet and liability fund is created. Owner and partners join the company by sending initial capital to a generated company account. The minimum amount of initial capital is 100 XDAC. Default liability fund deduction is 10%. 
 PR-0200 | UR-0100 | Company Dashboard | S | Company overview with list of pending tasks, pending proposals, wallet and liability fund balances, team and company ratings.
-PR-0300 | UR-0200 | Public Profile | M | Create a company public profile with a) Date of company registration, b) Amount of Initial Capital, c) Amount on Liability Fund, d) Company rating, e) List or display number of company owners, f) List or display number of team members with hire option, g) Short company tag or description (250 chars). Company owners can edit their public profile including a logo, company description or link public articles or videos.  
+PR-0300 | UR-0200 | Public Profile | M | Create a company public profile with a) Date of company registration, b) Amount of Initial Capital, c) Amount on Liability Fund, d) Company rating, e) List or display number of company owners, f) List or display number of team members with open position option, g) Short company tag or description (250 chars). Company owners can edit their public profile including a logo, company description or link public articles or videos.  
 UR-0400 | UR-0300 | Company Bylaws | M | A form where owner(s) can define a corporation's purpose, how it will operate, and the duties and responsibilities of the owners and managers. Owners can specify ownership rights, select officers, and directors, plan meetings, and establish how to remove officers or directors. 
 UR-0500 | UR-0400 | Company Assets | C | Editable list of resources or things of value that are owned by a company.
 UR-0600 | UR-0500 | Partners | M | List of partners and their stakes with option to add or remove partners.
-UR-0700 | UR-0600 | Ownership Transfer | S | Due diligence and option to transfer company to a new owner through escrow smart contract. Liability fund released after 90 days to owners based on their stake in the company. 
+UR-0700 | UR-0600 | Ownership Transfer | S | Due diligence checklist and option to transfer company to a new owner through escrow smart contract. Liability fund released after 90 days to owners based on their stake in the company.
+UR-0800 | UR-0700 | Company Wallet | M | XDAC wallet for sending and receiving payments that replaces traditional bank account.
+UR-0900 | UR-0800 | Transactions | M | List of company transactions with filtering options.
+UR-1000 | UR-0900 | Mechant Tools | S | Online form which lets owners generate payment buttons for their online store.
+UR-1100 | UR-1000 | Dispute Management | M | Dispute management should have following options: a) start a new dispute, b) list of pending disputes, c) escalate resolved dispute, d) assign dispute to specific DRB representative, e) set price for resolving the dispute.
+UR-1200 | UR-1000 | DRB Management | M | Add registration of arbiters who are representatives of decentralized DRB. Registration should create XDAC wallet for each representative. Create a pool of pending disputes where arbiters can select and resolve disputes. Representatives will be paid for dispute resolution to their XDAC wallet.
+UR-1300 | UR-1100 | Team Management | S | Add option to manage a team and assign a position and permissions to each team member. UI will display a hierarchy of company structure chart. Each team member and team is rated by automated Performance Rating.
+UR-1400 | UR-1100 | Hire Team Member | S | Add open position form and display open position on company public profile.
+UR-1500 | UR-1100 | Open Positions | C | Create a public list of open positions where job seekers can search for open positions.
+
 
 Priority: define whether the requirement is: 
 - Must have (M) – must be implemented in the system.
