@@ -26,7 +26,7 @@ Tag | Description
 AA | Autonomous Agent (Bot, robot, AI, smart applications)
 DAC| Decentralized autonomous company
 DRB | Dispute Representative Board
-Initial Capital | The initial capital is amount of XDAC to start company and distribute company ownership among owners. 1 XDAC is one vote in the company. If company has multiple partners, they can participate in the company by sending XDAC tokens from a different wallet addresses in an amount that represents their stake.
+Initial Capital | The initial capital is amount of XDAC to start company and distribute company ownership among owners. The minimum amount of initial capital is 100 XDAC. 1 XDAC is one vote in the company. If company has multiple partners, they can participate in the company by sending XDAC tokens from a different wallet addresses in an amount that represents their stake.
 Performance Rating | It is a mechanism that allows for an automated rating based on tracking work ethic and delivering tasks on time. Each task will be rated between 0 and 1 (0 means task not finished, not delivered, or not paid on time) whereas (1 means task was finished and payment initiated). 
 PR | Product Requirements
 RD | Requirements Document
@@ -88,18 +88,18 @@ PR ID | UR ID | Product Requirement  | Priority | Description
 PR-0100 | UR-0100 | Company registration | M | Company registration via a web browser. Store company name, domain, owner's email on the distributed ledger. After email verification XDAC wallet and liability fund is created. Owner and partners join the company by sending initial capital to a generated company account. The minimum amount of initial capital is 100 XDAC. Default liability fund deduction is 10%. 
 PR-0200 | UR-0100 | Company Dashboard | S | Company overview with list of pending tasks, pending proposals, wallet and liability fund balances, team and company ratings.
 PR-0300 | UR-0200 | Public Profile | M | Create a company public profile with a) Date of company registration, b) Amount of Initial Capital, c) Amount on Liability Fund, d) Company rating, e) List or display number of company owners, f) List or display number of team members with open position option, g) Short company tag or description (250 chars). Company owners can edit their public profile including a logo, company description or link public articles or videos.  
-UR-0400 | UR-0300 | Company Bylaws | M | A form where owner(s) can define a corporation's purpose, how it will operate, and the duties and responsibilities of the owners and managers. Owners can specify ownership rights, select officers, and directors, plan meetings, and establish how to remove officers or directors. 
-UR-0500 | UR-0400 | Company Assets | C | Editable list of resources or things of value that are owned by a company.
-UR-0600 | UR-0500 | Partners | M | List of partners and their stakes with option to add or remove partners.
+PR-0400 | UR-0300 | Company Bylaws | M | A form where owner(s) can define a corporation's purpose, how it will operate, and the duties and responsibilities of the owners and managers. Owners can specify ownership rights, select officers, and directors, plan meetings, and establish how to remove officers or directors. 
+PR-0500 | UR-0400 | Company Assets | C | Editable list of resources or things of value that are owned by a company.
+PR-0600 | UR-0500 | Partners | M | List of partners and their stakes with option to add or remove partners.
 UR-0700 | UR-0600 | Ownership Transfer | S | Due diligence checklist and option to transfer company to a new owner through escrow smart contract. Liability fund released after 90 days to owners based on their stake in the company.
-UR-0800 | UR-0700 | Company Wallet | M | XDAC wallet for sending and receiving payments that replaces traditional bank account.
+PR-0800 | UR-0700 | Company Wallet | M | XDAC wallet for sending and receiving payments that replaces traditional bank account.
 UR-0900 | UR-0800 | Transactions | M | List of company transactions with filtering options.
-UR-1000 | UR-0900 | Mechant Tools | S | Online form which lets owners generate payment buttons for their online store.
-UR-1100 | UR-1000 | Dispute Management | M | Dispute management should have following options: a) start a new dispute, b) list of pending disputes, c) escalate resolved dispute, d) assign dispute to specific DRB representative, e) set price for resolving the dispute.
-UR-1200 | UR-1000 | DRB Management | M | Add registration of arbiters who are representatives of decentralized DRB. Registration should create XDAC wallet for each representative. Create a pool of pending disputes where arbiters can select and resolve disputes. Representatives will be paid for dispute resolution to their XDAC wallet.
-UR-1300 | UR-1100 | Team Management | S | Add option to manage a team and assign a position and permissions to each team member. UI will display a hierarchy of company structure chart. Each team member and team is rated by automated Performance Rating.
-UR-1400 | UR-1100 | Hire Team Member | S | Add open position form and display open position on company public profile.
-UR-1500 | UR-1100 | Open Positions | C | Create a public list of open positions where job seekers can search for open positions.
+PR-1000 | UR-0900 | Mechant Tools | S | Online form which lets owners generate payment buttons for their online store.
+PR-1100 | UR-1000 | Dispute Management | M | Dispute management should have following options: a) start a new dispute, b) list of pending disputes, c) escalate resolved dispute, d) assign dispute to specific DRB representative, e) set price for resolving the dispute.
+PR-1200 | UR-1000 | DRB Management | M | Add registration of arbiters who are representatives of decentralized DRB. Registration should create XDAC wallet for each representative. Create a pool of pending disputes where arbiters can select and resolve disputes. Representatives will be paid for dispute resolution to their XDAC wallet.
+PR-1300 | UR-1100 | Team Management | S | Add option to manage a team and assign a position and permissions to each team member. UI will display a hierarchy of company structure chart. Each team member and team is rated by automated Performance Rating.
+PR-1400 | UR-1100 | Hire Team Member | S | Add open position form and display open position on company public profile.
+PR-1500 | UR-1100 | Open Positions | C | Create a public list of open positions where job seekers can search for open positions.
 
 
 Priority: define whether the requirement is: 
