@@ -70,8 +70,8 @@ UR-0700 | UN-0200 | Company Wallet | Company cryptocurrency wallet to send or re
 UR-0800 | UN-0200 | Transactions | Company wallet transaction history
 UR-0900 | UN-0200 | Mechant Tools | Buy Now button and shopping cart for online purchases
 UR-1000 | UN-0300 | Dispute Management | Cheap and simple dispute resolution via decentralized arbiters
-UR-1100 | UN-0400 | Team Management | Manage team, their positions, and permissions
-UR-1200 | UN-0400 | Automated evaluation | Evaluate automatically team members based on their performance
+UR-1100 | UN-0400 | Team Management | Manage team, their positions, and permissions, hire new team member
+UR-1200 | UN-0400 | Automated Evaluation | Evaluate automatically team members based on their performance
 UR-1300 | UN-0500 | Project Management | Manage projects and tasks, assign tasks to team members and pay them automatically when the task is finished
 UR-1400 | UN-0600 | Fundraising Tools | Issue new tokens and start ICO or private sale
 UR-1500 | UN-0700 | Voting | Owners can submit new proposals and vote on existing platform or company proposals
@@ -97,9 +97,14 @@ UR-0900 | UR-0800 | Transactions | M | List of company transactions with filteri
 PR-1000 | UR-0900 | Mechant Tools | S | Online form which lets owners generate payment buttons for their online store.
 PR-1100 | UR-1000 | Dispute Management | M | Dispute management should have following options: a) start a new dispute, b) list of pending disputes, c) escalate resolved dispute, d) assign dispute to specific DRB representative, e) set price for resolving the dispute.
 PR-1200 | UR-1000 | DRB Management | M | Add registration of arbiters who are representatives of decentralized DRB. Registration should create XDAC wallet for each representative. Create a pool of pending disputes where arbiters can select and resolve disputes. Representatives will be paid for dispute resolution to their XDAC wallet.
-PR-1300 | UR-1100 | Team Management | S | Add option to manage a team and assign a position and permissions to each team member. UI will display a hierarchy of company structure chart. Each team member and team is rated by automated Performance Rating.
-PR-1400 | UR-1100 | Hire Team Member | S | Add open position form and display open position on company public profile.
+PR-1300 | UR-1100 | New Team Member | S | Add option to register new team member and create 2 wallets. Primary wallet team members use for receiving payroll salary whereas the second wallet will be retirement fund.
+PR-1400 | UR-1100 | Team Management | S | Add option to hire new team member and manage existing team, assign a position and permissions to each team member. UI will display a hierarchy of company structure chart. Each team member and the team is rated by automated Performance Rating. 
 PR-1500 | UR-1100 | Open Positions | C | Create a public list of open positions where job seekers can search for open positions.
+PR-1600 | UR-1200 |  Performance Rating | S | Team members, teams and company will be evaluated automaticaly based on tracking work ethic and delivering tasks on time.
+PR-1700 | UR-1300 |  Project Management | S | Add project and task management DApp with automated payroll system. 
+PR-1800 | UR-1400 |  Fundraising Tools | S | Create tools for a company to issue new tokens for public or private distribution or to start ICO through their public profile. 
+PR-2000 | UR-1500 |  Company Voting | M | Integrate voting system for owners to vote on their internal proposals. 
+PR-2100 | UR-1500 |  Platform Voting | M | Integrate voting system for platform participants to vote for xDAC delegates and platform proposals. 
 
 
 Priority: define whether the requirement is: 
