@@ -55,6 +55,7 @@ UN-0400 | Simple team management tools | Group A
 UN-0500 | Simple project management tools | Group A
 UN-0600 | Simple fundraising tools | Group A
 UN-0700 | Owners vote on proposals | Group A
+UN-0800 | Incentives for contributing to the platform | Group A
 
 ## 2.3 User Requirements
 
@@ -74,7 +75,8 @@ UR-1100 | UN-0400 | Team Management | Manage team, their positions, and permissi
 UR-1200 | UN-0400 | Automated Evaluation | Evaluate automatically team members based on their performance
 UR-1300 | UN-0500 | Project Management | Manage projects and tasks, assign tasks to team members and pay them automatically when the task is finished
 UR-1400 | UN-0600 | Fundraising Tools | Issue new tokens and start ICO or private sale
-UR-1500 | UN-0700 | Voting | Owners can submit new proposals and vote on existing platform or company proposals
+UR-1500 | UN-0700 | Voting | Owners can submit new proposals and vote on platform or company proposals
+UR-1600 | UN-0800 | Incentives | Business owners should be incentivized for using an xDAC platform
 
 
 # 3 Product Requirements
@@ -104,10 +106,11 @@ PR-1600 | UR-1200 |  Performance Rating | S | Team members, teams and company wi
 PR-1700 | UR-1300 |  Project Management | S | Add project and task management DApp with automated payroll system. 
 PR-1800 | UR-1400 |  Fundraising Tools | S | Create tools for a company to issue new tokens for public or private distribution or to start ICO through their public profile. 
 PR-2000 | UR-1500 |  Company Voting | M | Integrate voting system for owners to vote on their internal proposals. 
-PR-2100 | UR-1500 |  Platform Voting | M | Integrate voting system for platform participants to vote for xDAC delegates and platform proposals. 
+PR-2100 | UR-1500 |  Platform Voting | M | Integrate voting system for platform participants to vote for xDAC Delegates and platform proposals. 
+PR-2200 | UR-1500 |  Platform Profit Distribution | M | Integrate distribution of platform profit based on performance rating. Profit will be distributed back to companies, their team members, xDAC Delegates and block producers. Profit will be generated from transaction fees.
 
 
-Priority: define whether the requirement is: 
+Priority:
 - Must have (M) – must be implemented in the system.
 - Should have (S) – must be implemented but may wait until a second increment.
 - Could have (C) – could be implemented but it is not central to the project objectives.
