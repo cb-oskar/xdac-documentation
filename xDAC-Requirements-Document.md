@@ -107,7 +107,7 @@ PR-1700 | UR-1300 |  Project Management | S | Add project and task management DA
 PR-1800 | UR-1400 |  Fundraising Tools | S | Create tools for a company to issue new tokens for public or private distribution or to start ICO through their public profile. 
 PR-2000 | UR-1500 |  Company Voting | M | Integrate voting system for owners to vote on their internal proposals. 
 PR-2100 | UR-1500 |  Platform Voting | M | Integrate voting system for platform participants to vote for xDAC Delegates and platform proposals. 
-PR-2200 | UR-1500 |  Platform Profit Distribution | M | Integrate distribution of platform profit based on performance rating. Profit will be distributed back to companies, their team members, xDAC Delegates and block producers. Profit will be generated from transaction fees.
+PR-2200 | UR-1600 |  Platform Profit Distribution | M | Integrate distribution of platform profit based on performance rating. Profit will be distributed back to companies, their team members, xDAC Delegates and block producers. Profit will be generated from transaction fees.
 
 
 Priority:
