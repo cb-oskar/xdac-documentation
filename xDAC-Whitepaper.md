@@ -305,7 +305,7 @@ xDAC Platform will generate profits from transaction fees, exchange fees, and fe
 
 We want to make sure the profit generated on xDAC Platform will stay on the platform and gets distributed between xDACs and Team Members by way of participation.  Participation is calculated from xDAC CR (see 5.2.8), sum of all CRs and generated profit P.  
 
-![xDAC Project](/images/xDAC-profit-equation.JPG)
+![xDAC Project](/images/xDAC-Profit-equation.JPG)
 
 Profit is then distributed between company team members by dividing xDAC profit by the calculated percentage from sum of ratings in the team.
 
