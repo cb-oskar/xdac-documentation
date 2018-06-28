@@ -1,1 +1,1 @@
-Please go to [wiki/wiki](https://github.com/xdacco/xdac-wiki).
+Please go to [wiki/wiki](https://github.com/xdacco/xdac-wiki/wiki).
