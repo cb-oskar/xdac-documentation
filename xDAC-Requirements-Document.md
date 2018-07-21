@@ -1,3 +1,5 @@
+# xDAC Requirements Document
+
 # 1 Introduction
 
 This document is the definitive specification of the user requirements for xDAC companies to be developed under the xDAC Project.  It is a primary input to the technical development of those facilities, and the primary specification of the criteria against which the acceptability of those facilities will be evaluated after they have been developed.  
@@ -113,3 +115,27 @@ Priority:
 - Should have (S) – must be implemented but may wait until a second increment.
 - Could have (C) – could be implemented but it is not central to the project objectives.
 - Wish to have (W) – will not be implemented but it will be considered for a future phase.
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,5 @@
+# xDAC Functional Specification
+
 ## Introduction
 
 Purpose of this document
@@ -16,9 +18,7 @@ c.	contractors who undertake all or parts of the development, as optional illumi
 
 ## 1.1.	Architecture
 
-<!--![xDAC Registration Flowchart](/images/xDAC_register-comp-flowchart-v1.06.jpg)-->
-
-[[/images/xDAC_register-comp-flowchart-v1.06.jpg|xDAC Registration Flowchart]]
+![xDAC Registration Flowchart](/images/xDAC_register-comp-flowchart-v1.06.jpg)
 
 ## 1.2.	Company Registration Form (Step 1)
 
@@ -37,9 +37,7 @@ The user sends a request to register a new company. Registration form contains:
 
 The minimum amount of required capital is 100 XDAC, therefore initial supply or token price must be set the way so require capital reaches at least 100 XDAC.
 
-<!--![xDAC Registration form](/images/xDAC-Company-registration-form.jpg)-->
-
-[[/images/xDAC-Company-registration-form.jpg|xDAC Registration form]]
+[xDAC Registration form](/images/xDAC-Company-registration-form.jpg)
 
 ## 1.3.	Create New Personal Account (Step 2)
 
@@ -152,7 +150,7 @@ Buy XDAC Coins in the sidebar is opened.
 ### 1.10.4.	User has ERC20 XDAC tokens
 Swap XDAC tokens for XDAC coins in the sidebar is opened.  
 
-###1.10.5.	User has Scatter, account and coins
+### 1.10.5.	User has Scatter, account and coins
 After investors created a personal account and fund their account with XDAC coins, they can purchase equity in the company.
 
 ## 1.11.	Public Profile (Step 10)

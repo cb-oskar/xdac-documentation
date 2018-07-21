@@ -1,9 +1,13 @@
+# White Paper
+
 Version 1.0.8 | March 17, 2018
 
 # Abstract
 
 With a focus on creating true global indiscriminatory economic growth, organizations, entrepreneurs, and investors need a sustainable ecosystem free from the influence of regulatory agencies and malicious third-parties. As companies seek ways to raise capital through ICOs, streamline operations by using blockchains, enhance growth, and increase profitability, they need to determine the advantages of establishing and managing business in different locations worldwide. Most significant barriers they face are hiring local talent, keeping up with innovation, the increased cost of operating in a foreign countries, corporate taxes, and government regulations [1].
+
 This document highlights the benefits of creating a business-oriented Decentralized Autonomous Companies (xDAC), a subclass of DAO, on a decentralized network with Proof of Work (PoW) incentive mechanism, its governance, management tools and an alignment system built on top of EOS. xDAC governance is regulated by an xDAC Platform, which is designed to be a self-sustainable decentralized ecosystem consisting of businesses motivated to participate and reap the rewards of their success without geographical restrictions or limitations. Initially, the xDAC Platform will be designed specifically for profit-driven companies but is modular enough to accommodate other types of organizations. 
+
 The paper first highlights the principles of an organization and the function of xDAC. Finally, the paper defines the three major interconnected services xDAC plans on implementing to ensure its overall success; governance, finances and workforce.
 
 **About this document**
@@ -41,7 +45,7 @@ The token is not therefore intended to represent a security interest.
         4.	Project management
         5.	Wallet
         6.	List of xDACs
-6.	xDAC Foundation
+6.	xDAC Delegates
 7.	Platform Profit and its Distribution by PoW
 8.	XDAC Token
 
@@ -114,7 +118,7 @@ Our goal is to encourage developers to create internal autonomous agents that ar
 # 5.	Architecture
 Ecosystem can be viewed as several distinct technological layers strategically connected together.
 
-![xDAC Architecture](https://github.com/xdacco/xdac-wiki/blob/master/images/xDAC-Platform-Layers.png)
+![xDAC Architecture](/images/xDAC-Platform-Layers.png)
 
 ## 5.1.	EOS Platform
 Among the decentralized smart contract platforms, EOS is the most advanced, feeless, blockchain platform. Only in its testing phase, the growing developer community is in the midst of testing on top of the EOS platform, creating a vibrant ecosystem of second layer protocols and projects. 
@@ -219,13 +223,13 @@ xDAC’s PoW mechanism allows for an automated rating system by incorporating De
 
 Team Rating: 
 
-![xDAC Team Rating](https://github.com/xdacco/xdac-wiki/blob/master/images/xDAC-Team-Rating-equation.JPG)
+![xDAC Team Rating](/images/xDAC-Team-Rating-equation.JPG)
 
 or
 
 Company Rating: 
 
-![xDAC Company Rating](https://github.com/xdacco/xdac-wiki/blob/master/images/xDAC-Company-Rating-equation.JPG)
+![xDAC Company Rating](/images/xDAC-Company-Rating-equation.JPG)
 
 Where *n* is the number of team members or teams within unit.
 
@@ -275,14 +279,14 @@ xDAC team consist of team members (employees, contractors, freelancers or autono
 
 Designed for xDAC team members, managers will add each company’s personnel to hierarchy. With placing team member into xDAC hierarchy, each employee will get privileges allocated to specific xDAC functions tailored to their responsibilities. 
 
-![xDAC Team](https://github.com/xdacco/xdac-wiki/blob/master/images/xDAC_Team.jpg)
+![xDAC Team](/images/xDAC_Team.jpg)
 
 Furthermore, the user interface will let owners choose the amount to pay, the frequency, the tokens to reward, and the parameters. This is to safeguard the company in case xDAC doesn’t want to pay certain employees based on assigned tasks. Team members are paid in XDAC tokens.
 
 ### 5.3.4.	Project management
 Project and task management is an important part of xDAC DApp ecosystem. It is the productivity DApp that forces leaders to manage their team effectively. Each assigned task has price options in XDAC tokens which keeps the team motivated while increasing token usability. Project management DApp provides the option to create projects, task lists and tasks and assign tasks to any team member. 
 
-![xDAC Project](https://github.com/xdacco/xdac-wiki/blob/master/images/xDAC_Tasks.jpg)
+![xDAC Project](/images/xDAC_Tasks.jpg)
 
 ### 5.3.5.	Wallet
 The most important part of each company is payment processing and digital wallet. xDAC Platform will create wallet for each xDAC upon company establishment. Wallet will contain merchant features like a “Buy Now” button and streamlined billing. The “Buy Now” button can be placed on the company’s website and billing options allow for the creation of invoices.
@@ -295,33 +299,33 @@ The most important feature of Wallet is keeping track of all financial transacti
 ### 5.3.6.	List of xDACs
 Investor accounts will be able to view and sort lists of existing public xDACs. Lists will highlight information like Market Cap, Price, Circulation Supply, Employees, Company Rating, etc. Full disclosure of information will instill investor confidence when making the purchase tokens of existing xDAC through ICOs.
 
-# 6. xDAC Foundation
-xDAC Platform and xDAC client is developed by xDAC Foundation – the current team responsible for development and deployment of the xDAC project. xDAC Foundation initiates fund raising through XDAC Token and proceeds will be transferred to the foundation to finance further development.
+# 6. xDAC Delegates
+xDAC Delegates is an entity created on xDAC Platform which leads business, marketing, and development of the platform. Delegates are voted by platform users every 2 years from candidates who contributed to the platform. Delegates are paid from platform profit.
 
-# 7.	Platform Profit and its Distribution by PoW
+# 7. Platform Profit and its Distribution by PoW
 xDAC Platform will generate profits from transaction fees, exchange fees, and fees for token creation, distribution through ICOs etc.
 
 We want to make sure the profit generated on xDAC Platform will stay on the platform and gets distributed between xDACs and Team Members by way of participation.  Participation is calculated from xDAC CR (see 5.2.8), sum of all CRs and generated profit P.  
 
-![xDAC Project](https://github.com/xdacco/xdac-wiki/blob/master/images/xDAC-Profit-equation.JPG)
+![xDAC Project](/images/xDAC-Profit-equation.JPG)
 
 Profit is then distributed between company team members by dividing xDAC profit by the calculated percentage from sum of ratings in the team.
 
 Profit sharing within the team is defined by Distribution Coefficient (DC).
 
-![xDAC Project](https://github.com/xdacco/xdac-wiki/blob/master/images/xDAC-Distribution-Coefficient-equation.JPG)
+![xDAC Project](/images/xDAC-Distribution-Coefficient-equation.JPG)
 
 Where Team Size (TS) is number of people team member manages.
 
 Token Distribution to each Team Member will be:
 
-![xDAC Project](https://github.com/xdacco/xdac-wiki/blob/master/images/xDAC-Token-Distribution-equation.JPG)
+![xDAC Project](/images/xDAC-Token-Distribution-equation.JPG)
 
 In our following example, an eight person team received profits from a platform of 1,500 XDAC tokens. Distribution is as follows:
 
 #### xDAC Team Structure
 
-![xDAC Project](https://github.com/xdacco/xdac-wiki/blob/master/images/xDAC-WP-team.jpg)
+![xDAC Project](/images/xDAC-WP-team.jpg)
 
 Distribution of xDAC Platform Profit within company
 
