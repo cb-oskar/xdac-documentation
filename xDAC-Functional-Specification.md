@@ -52,22 +52,26 @@ xDAC needs to be an owner of the account due to the further function of that wil
 
 *\* While  system is in development xDAC reserves the right to manage company contracts to develop all functionalities. Owner will be removed after all company segments are deployed.*
 
-![xDAC Registration form](/images/xDAC-new-personal-account.jpg)
+![xDAC New Personal Account](/images/xDAC-new-personal-account.jpg)
 
-![xDAC Registration form](/images/xDAC-new-personal-account-done.jpg)
+![xDAC New Personal Account Done](/images/xDAC-new-personal-account-done.jpg)
 
 ## 1.4.	Data Verification (Step 3)
 
-The request is sent to core contract and checked for valid data and duplicates. All field must be filled out.  Company name, company account name and token symbol must be unique.  If duplicates are found, we will display “whois” option to locate an existing company. Initial supply should not exceed total supply. 
+The request is sent to core contract and checked for valid data and duplicates. All field must be filled out. Company name, company account name and token symbol must be unique.  If duplicates are found, we will display “whois” option to locate an existing company with identical data. Initial supply should not exceed total supply. 
 
-## 1.5.	Buy Equity (Step 4)
+![xDAC Registration form error](/images/xDAC-Company-registration-form-error.jpg) 
 
-After data validation Register Company button will open the Buy Equity sidebar. The sidebar contains a form with:
+## 1.5.	Buy Equity in Company (Step 4)
+
+After data validation, Register Company button will open the Buy Equity sidebar. The sidebar contains a form with:
 
 *	Equity in XDAC coins
 *	Equity in percent
 
-Data are correlated, so if one is changed, other changes as well. After specifying the amount, the user can buy equity via Scatter. 
+Data are correlated. If one is changed, other changes accordingly. After specifying the amount, the user can buy equity via Scatter. 
+
+![xDAC Buy Equity Tokens](/images/xDAC-buy-equity.jpg) 
 
 ## 1.6.	Company Submission (Step 5)
 
