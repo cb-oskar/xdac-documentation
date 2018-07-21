@@ -37,7 +37,7 @@ The user sends a request to register a new company. Registration form contains:
 
 The minimum amount of required capital is 100 XDAC, therefore initial supply or token price must be set the way so require capital reaches at least 100 XDAC.
 
-[xDAC Registration form](/images/xDAC-Company-registration-form.jpg)
+![xDAC Registration form](/images/xDAC-Company-registration-form.jpg)
 
 ## 1.3.	Create New Personal Account (Step 2)
 
@@ -48,7 +48,13 @@ If the user doesn’t have a personal account yet, it can be created in sidebar 
 *	Owner private key (option to generate)
 *	Active public key (option to generate)
 
-xDAC needs to be an owner of the account due to the further function of that will be added to team members and platform participants. xDAC is the owner, user permission is active.
+xDAC needs to be an owner of the account due to the further function of that will be added to team members and platform participants. xDAC is the owner *, user permission is active.
+
+*\* While  system is in development xDAC reserves the right to manage company contracts to develop all functionalities. Owner will be removed after all company segments are deployed.*
+
+![xDAC Registration form](/images/xDAC-new-personal-account.jpg)
+
+![xDAC Registration form](/images/xDAC-new-personal-account-done.jpg)
 
 ## 1.4.	Data Verification (Step 3)
 

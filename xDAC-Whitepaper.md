@@ -1,4 +1,4 @@
-# White Paper
+# xDAC Whitepaper
 
 Version 1.0.8 | March 17, 2018
 
