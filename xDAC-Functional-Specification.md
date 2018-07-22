@@ -79,15 +79,16 @@ Proceeds from equity purchase are transferred to the core contract with all subm
 
 Core contract is a bridge between company registration dApp and a company account. It holds the investment until the company is created and deployed to the network. Furthermore, the core contract manages a database of companies and stores data in the central database. The central database stores the following data:
 
-*	c_name - Company name
-*	c_aname - Company account name
-*	t_symbol - Token symbol 
+* c_coreid - Company ID
+* c_name - Company name
+* c_aname - Company account name
+* t_symbol - Token symbol 
 
 ## 1.7.	Deploying Company (Step 6)
 
 Core contract is responsible for deploying company through nodejs service to xDAC network while investment remains on core contract. Deploying process has the following steps:
 
-### 1.7.1.	Deploying company account to xDAC network.
+### 1.7.1.	Deploying company account
 
 A new multi-sig account on the xDAC network is created with xDAC as the only owner. Permissions of created account are: 
 * xDAC (***owner***) weight 1, threshold 1 (will be removed after platform development),
@@ -102,7 +103,7 @@ A new multi-sig account on the xDAC network is created with xDAC as the only own
 
 ***publish*** authority is used for making other low-level updates, transferring funds below the threshold, hiring team members or resolving disputes. 
 
-### 1.7.2.	Creates company contract
+### 1.7.2.	Creating company contract
 
 Smart contract manages the transfer of funds between company account and liability fund. All received transactions must be distributed between the liability fund and company account based on the liability fund discount rate until the liability fund cap is reached.
 
@@ -111,7 +112,7 @@ Smart contract manages the transfer of funds between company account and liabili
 Deploy equity token contract with parameters specified by the company founder.If the initial supply is less than the total supply, only the amount of initial token supply is issued. Remaining tokens can be issued by company owners in the later stage.
 In case tokens have a lock-up period, tokens should not be transferable.
 
-### 1.7.4.	Creates storage contract (DB)
+### 1.7.4.	Creating storage contract (DB)
 
 Storage contract is database storing company information and records. At company creation database has following tables:
 
@@ -152,16 +153,35 @@ cmeta_id | user_id | cmeta_key | cmeta_value | cmeta_threshold
 7 | 1 | c_rating | < Company rating (int 0.00, default 0) > | 0
 8 | 1 | c_lfrate | < Company liability fund discount rate (default 10%) > | 51
 9 | 1 | c_lfcap | < Company liability fund cap (default 10% of initial capital in XDAC) > | 51
-10 | 1 | c_locked | < Company freex (T,F) (default F) > | 0
-11 | 1 | core_id | < Core DB company ID > | 0
-12 | 1 | c_media | < URL to public articles or media > | 1
+10 | 1 | c_locked | < Company freeze (T,F) (default F) > | 0
+11 | 1 | c_coreid | < Core DB company ID > | 0
+
+<!-- 12 | 1 | c_media | < URL to public articles or media > | 1 -->
 
 Threshold 0 prohibits the company from changing record.
 
+Table ***company_contracts***
+* contract_id
+* contract_name
+* contract_ver
+* contracr_rdate
+
+Initial record are:
+
+contract_id | contract_name | contract_ver | ucontracr_rdate
+--- | ----------- | ----- | --------
+1 | company contract | 1.0.0 | 1532300964
+2 | storage contract | 1.0.0 | 1532300964
+3 | lf contract | 1.0.0 | 1532300964
+
+Each company smart contracts must have a name and a version number stored in ***company_contracts*** table. Other smart contracts or dApps will interact with storage contract before each call. Storage contract will return name and version number of the most recent contract.
+
 ## 1.7.5.	Liability Fund Contract
 
-Liability fund is smart contact which holds XDAC tokens from all received payments.
-Contracts should have a version number and each contract or dApp will talk to smart contracts with highest version numbers on the accounts in case we release contract updates with the higher version number.
+Liability fund is collateral in the form of smart contact holding XDAC tokens in case of the company debts or liabilities.
+Funds on liability fund during company existence can be accessed only by dispute representative board.
+
+After a company is acquired, liquidated, or closed, a Liability Fund will be distributed between owners based on their respective stake in the company.
 
 ## 1.8.	Initial Capital Release (Step 7)
 
