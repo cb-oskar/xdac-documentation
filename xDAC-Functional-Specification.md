@@ -33,7 +33,7 @@ The user sends a request to register a new company. Registration form contains:
 *	t_isupply - Initial supply (max 1,000,000,000)
 *	t_price - Token price (min 0.001 XDAC) 
 *	t_lockp - Lock-up period (max 9,999 days) 
-*	Required capital (t_isupply * t_price)
+*	Required intial capital (t_isupply * t_price)
 
 The minimum amount of required capital is 100 XDAC, therefore initial supply or token price must be set the way so require capital reaches at least 100 XDAC.
 
@@ -77,37 +77,86 @@ Data are correlated. If one is changed, other changes accordingly. After specify
 
 Proceeds from equity purchase are transferred to the core contract with all submitted data. 
 
+Core contract is a bridge between company registration dApp and a company account. It holds the investment until the company is created and deployed to the network. Furthermore, the core contract manages a database of companies and stores data in the central database. The central database stores the following data:
+
+*	c_name - Company name
+*	c_aname - Company account name
+*	t_symbol - Token symbol 
+
 ## 1.7.	Deploying Company (Step 6)
 
-Data are sent to nodejs while funds remain on core contract. Nodejs will:
+Core contract is responsible for deploying company through nodejs service to xDAC network while investment remains on core contract. Deploying process has the following steps:
 
-### 1.7.1.	Deploys company account to the network.
+### 1.7.1.	Deploying company account to xDAC network.
 
-A new multi-sig account is created with xDAC as only owner. Company founders don’t have owner permission to the company account. At this point permissions are: xDAC (owner) weight 1, threshold 1 and founder (active) weight 1, threshold 1. (Confirm how we are going to manage owners if they constantly changing.)
+A new multi-sig account on the xDAC network is created with xDAC as the only owner. Permissions of created account are: 
+* xDAC (***owner***) weight 1, threshold 1 (will be removed after platform development),
+* Founder (***active***) weight < stake in the company >, threshold 51, 
+* Founder (***publish***) weight 1, treshold 1.
+
+**Permissions**
+
+***owner*** authority symbolizes right to administrate the account. Deploy or update existing smart contracts and features. Throughout development, only xDAC delegates will have full authority to manage the company account. After development, only block producers with the consent of the network users can release updates that affect company accounts.
+
+***active*** authority is used for transferring funds above the threshold, voting for company executives, approving company actions, voting for producers and making other high-level account changes.
+
+***publish*** authority is used for making other low-level updates, transferring funds below the threshold, hiring team members or resolving disputes. 
 
 ### 1.7.2.	Creates company contract
 
-Smart contract manages transfer of funds between account and liability fund. All received transactions must be divided based on liability fund discount rate until liability fund cap is reached. (confirm)
+Smart contract manages the transfer of funds between company account and liability fund. All received transactions must be distributed between the liability fund and company account based on the liability fund discount rate until the liability fund cap is reached.
 
-### 1.7.3.	Issue Equity Tokens
-Deploy token contract with parameters specified by the founder. In case initial supply is lower than total supply, we will issue only tokens in the amount of initial supply and remaining tokens can be issued later. (confirm)
-In case tokens have a lock-up period, tokens should not be transferable.   
+### 1.7.3. Equity Tokens Issuance
+
+Deploy equity token contract with parameters specified by the company founder.If the initial supply is less than the total supply, only the amount of initial token supply is issued. Remaining tokens can be issued by company owners in the later stage.
+In case tokens have a lock-up period, tokens should not be transferable.
+
 ### 1.7.4.	Creates storage contract (DB)
 
-DB have following items:  
-* c_name - Company name (editable)
-* c_aname - Company account name
-* c_created - Date and time of company registration
-* c_tag - Company tag (60 chars) (editable) 
-* c_desc - Company description (320 chars) (editable)
-* c_eqprice - Equity tokens nominal value in XDAC 
-* c_rating - Company rating (int 0.00, default 0)
-* c_lfrate – Company liability fund discount rate (default 10%)
-* c_lfcap – Company liability fund cap (default 10% of initial capital in XDAC)
-* c_media – URL to public articles or media (confirm)
-* c_contact - Company contact (email) (editable) 
-* c_lock – Company lock (T,F) (default F)
-* core_id - Core DB company ID
+Storage contract is database storing company information and records. At company creation database has following tables:
+
+Table ***company_users***
+* user_id
+* user_fname
+* user_lname
+* user_p_aname
+* user_role
+
+Initial record is:
+
+user_id | user_fname | user_lname | user_p_aname | user_role
+--- | ----------- | ----- | -------- | --------
+1 | empty | empty | < Founder personal account name > | owner
+
+User roles: 
+* ***owner*** - founder, investor, owner
+* ***member*** - team member or advisor
+
+Table ***company_meta***
+* cmeta_id
+* user_id
+* cmeta_key
+* cmeta_value
+* cmeta_threshold
+
+Initial records are:
+
+cmeta_id | user_id | cmeta_key | cmeta_value | cmeta_threshold
+--- | ----------- | ----- | -------- | --------
+1 | 1 | c_name | < Company name > | 51
+2 | 1 | c_aname | < Company account name > | 0
+3 | 1 | c_contact | < Company contact (email)  > | 1
+4 | 1 | c_tag | < Company tag (60 chars) > | 1
+5 | 1 | c_desc | < Company description (320 chars) > | 1
+6 | 1 | c_eqprice | < Equity tokens nominal value in XDAC > | 51
+7 | 1 | c_rating | < Company rating (int 0.00, default 0) > | 0
+8 | 1 | c_lfrate | < Company liability fund discount rate (default 10%) > | 51
+9 | 1 | c_lfcap | < Company liability fund cap (default 10% of initial capital in XDAC) > | 51
+10 | 1 | c_locked | < Company freex (T,F) (default F) > | 0
+11 | 1 | core_id | < Core DB company ID > | 0
+12 | 1 | c_media | < URL to public articles or media > | 1
+
+Threshold 0 prohibits the company from changing record.
 
 ## 1.7.5.	Liability Fund Contract
 
