@@ -29,8 +29,8 @@ The user sends a request to register a new company. Registration form contains:
 *	p_aname - Personal account name 
 *	t_name - Token name (max 30 chars) 
 *	t_symbol - Token symbol (max 8 Chars) 
-*	t_tsuply - Total supply (max 1,000,000,000)
-*	t_isupply - Initial supply (max 1,000,000,000)
+*	t_tsuply - Total supply (min 1)
+*	t_isupply - Initial supply (min 1)
 *	t_price - Token price (min 0.001 XDAC) 
 *	t_lockp - Lock-up period (max 9,999 days) 
 *	Required intial capital (t_isupply * t_price)
@@ -103,16 +103,7 @@ A new multi-sig account on the xDAC network is created with xDAC as the only own
 
 ***publish*** authority is used for making other low-level updates, transferring funds below the threshold, hiring team members or resolving disputes. 
 
-### 1.7.2.	Creating company contract
-
-Smart contract manages the transfer of funds between company account and liability fund. All received transactions must be distributed between the liability fund and company account based on the liability fund discount rate until the liability fund cap is reached.
-
-### 1.7.3. Equity Tokens Issuance
-
-Deploy equity token contract with parameters specified by the company founder.If the initial supply is less than the total supply, only the amount of initial token supply is issued. Remaining tokens can be issued by company owners in the later stage.
-In case tokens have a lock-up period, tokens should not be transferable.
-
-### 1.7.4.	Creating storage contract (DB)
+### 1.7.2.	Creating storage contract (DB)
 
 Storage contract is database storing company information and records. At company creation database has following tables:
 
@@ -130,7 +121,7 @@ user_id | user_fname | user_lname | user_p_aname | user_role
 1 | empty | empty | < Founder personal account name > | owner
 
 User roles: 
-* ***owner*** - founder, investor, owner
+* ***owner*** - founder, investor or owner
 * ***member*** - team member or advisor
 
 Table ***company_meta***
@@ -170,48 +161,75 @@ Initial record are:
 
 contract_id | contract_name | contract_ver | ucontracr_rdate
 --- | ----------- | ----- | --------
-1 | company contract | 1.0.0 | 1532300964
-2 | storage contract | 1.0.0 | 1532300964
-3 | lf contract | 1.0.0 | 1532300964
+1 | company contract | 1.0.0 | < Unix Timestamp >
+2 | storage contract | 1.0.0 | < Unix Timestamp >
+3 | lf contract | 1.0.0 | < Unix Timestamp >
 
 Each company smart contracts must have a name and a version number stored in ***company_contracts*** table. Other smart contracts or dApps will interact with storage contract before each call. Storage contract will return name and version number of the most recent contract.
+
+### 1.7.3.	Creating company contract
+
+Smart contract manages the transfer of funds between company account and liability fund. All received transactions must be distributed between the liability fund and company account based on the liability fund discount rate until the liability fund cap is reached.
+
+### 1.7.4. Equity Tokens Issuance
+
+Deploy equity token contract with parameters specified by the company founder. If the initial supply is less than the total supply, only the amount of initial token supply is issued. Remaining tokens can be issued by company owners in the later stage.
+In case tokens have a lock-up period, tokens should not be transferable until lock up period expires.
 
 ## 1.7.5.	Liability Fund Contract
 
 Liability fund is collateral in the form of smart contact holding XDAC tokens in case of the company debts or liabilities.
-Funds on liability fund during company existence can be accessed only by dispute representative board.
+Funds on liability fund during company existence can be accessed only by dispute representative board. In upcoming updates company owners will be able to increase or decrease the liability fund discount rate or cap.
 
 After a company is acquired, liquidated, or closed, a Liability Fund will be distributed between owners based on their respective stake in the company.
 
 ## 1.8.	Initial Capital Release (Step 7)
 
-After company contracts are deployed, nodejs will notify xDAC core and core contract will release received equity funds to company contract that will divide funds between account and liability fund based on clfrate and clfcap.
+After company contracts are deployed, nodejs will notify xDAC core and core contract will release equity funds to company contract.
 
 ## 1.9.	Token Sale (Step 8)
 
-Company info displayed on Token Sale page with option to Buy Equity Tokens. Page also contains send page link to email address. Token sale page is on xdac.co/s/< company name >.
+Company Token Sale is company crowdfunding option to raise funds from different investors or partners. Token sale page holds company summary information and a list of existing token holders. Anyone can access this page at xdac.co/s/< company account name > and purchase equity through Buy Equity Tokens button. This page can be shared with others via email.
 
-### 1.9.1.	Company sold 100% of equity tokens
-If the company sold 100% of initial supply, Buy Equity Tokens option is no longer available.
+Following situations can arise during the token sale:
 
-### 1.9.2.	Company didn’t sell all equity tokens
-If any remaining tokens are available, Buy Equity Tokens button is visible.
+### 1.9.1.	Company token sale 
 
-### 1.9.3.	51% owned by one account
-If the company is owned by account or one account owns more than 51%, approval of all investments are done by this account only.
+The company disposition of tokens is available until all equity tokens are sold. Unsold equity tokens are available to public investors or partners.
 
-### 1.9.4.	51% owned by multiple accounts
-Investments up to 51% do not need approval. When the amount of sold equity tokens reaches 51% or more, approval of new investments is required by owners with 51%.
+![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-50p.jpg)
 
-Each investment over 51% will be grayed on the list of company investments with “…” – pending status (visible to public). Owners with installed Scatter can see caret with options to accept or decline transaction.
+### 1.9.2.	Company sold 100% of equity tokens
 
-If transaction is approved by owner with 40% stake, approval percent will change to 40% and this account can’t vote again.
+If the company sold 100% of initial supply, Buy Equity Tokens option is no longer available. This round of token sale is closed. 
 
-In case investment was declined, decline percent will change to -40%
+![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-100p.jpg) 
 
-After approval reaches 51% or more, investment is accepted and transferred from core contract to company contract which will distribute investment between account and liability fund.
+### 1.9.3.	51% of equity tokens owned by one account
 
-If investment was declined by 51% or more, investment will refunded from core contract back to account of investor.
+If the company is controlled by a single account, the account owner has the authority to approve all new investments.
+
+![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-60p.jpg) 
+
+### 1.9.4.	51% of equity tokens owned by multiple accounts
+
+Investments up to 51% are accepted without approval. As soon as the amount of sold equity tokens reaches 51% or more, authorization of new investments is required by the majority of company owners holding at least 51%.
+
+![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-60p-3.jpg)
+
+Each investment received after reaching 51% will be separated in the list by a different color and marked with three dots (“…”) representing pending status. Pending status is visible to the public. Owners with installed Scatter can see drop down options to accept or decline investment.
+
+![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-60p-approval.jpg)
+
+If the investment is approved by the owner with 40% stake, approval percentage will change to 40% and the account will not be able to approve investment again. However, the same account can decline investment and vice versa.
+
+![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-60p-approved.jpg)
+
+In case investment was declined, decline percentage will change to -40%.
+
+After investment approval reaches 51% of votes or more, investment is accepted and transferred from a core contract to company contract which distributes investment between account and liability fund.
+
+Declined investments by 51% of votes or more will be refunded from core contract back to account of the investor.
 
 ## 1.10.	Buy Equity Tokens (Step 9)
 
