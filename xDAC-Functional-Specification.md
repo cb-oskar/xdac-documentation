@@ -18,7 +18,7 @@ c.	contractors who undertake all or parts of the development, as optional illumi
 
 ## 1.1.	Architecture
 
-![xDAC Registration Flowchart](/images/xDAC_register-comp-flowchart-v1.06.jpg)
+![xDAC Registration Flowchart](/images/xDAC_register-comp-flowchart-v1.07.jpg)
 
 ## 1.2.	Company Registration Form (Step 1)
 
@@ -103,73 +103,67 @@ A new multi-sig account on the xDAC network is created with xDAC as the only own
 
 ***publish*** authority is used for making other low-level updates, transferring funds below the threshold, hiring team members or resolving disputes. 
 
-### 1.7.2.	Creating storage contract (DB)
+### 1.7.2.	Creating company contract
+
+Smart contract manages the transfer of funds between company account and liability fund. All received transactions must be distributed between the liability fund and company account based on the liability fund discount rate until the liability fund cap is reached.
+
+### 1.7.3.	Creating company database
 
 Storage contract is database storing company information and records. At company creation database has following tables:
 
-Table ***company_users***
-* user_id
-* user_fname
-* user_lname
-* user_p_aname
-* user_role
+Table ***cusers***
+* cu_paname
+* cu_role
+* cu_fname
+* cu_lname
 
 Initial record is:
 
-user_id | user_fname | user_lname | user_p_aname | user_role
---- | ----------- | ----- | -------- | --------
-1 | empty | empty | < Founder personal account name > | owner
+cu_paname | cu_role | cu_fname | cu_lname
+--- | ----------- | ----- | --------
+< Founder personal account name > | owner | empty | empty
 
 User roles: 
 * ***owner*** - founder, investor or owner
 * ***member*** - team member or advisor
 
-Table ***company_meta***
-* cmeta_id
-* user_id
-* cmeta_key
-* cmeta_value
-* cmeta_threshold
+Table ***cmeta***
+* c_aname
+* c_name
+* c_desc
+* c_tag
+* c_contact
 
 Initial records are:
 
-cmeta_id | user_id | cmeta_key | cmeta_value | cmeta_threshold
+c_aname | c_name | c_desc | c_tag | c_contact
 --- | ----------- | ----- | -------- | --------
-1 | 1 | c_name | < Company name > | 51
-2 | 1 | c_aname | < Company account name > | 0
-3 | 1 | c_contact | < Company contact (email)  > | 1
-4 | 1 | c_tag | < Company tag (60 chars) > | 1
-5 | 1 | c_desc | < Company description (320 chars) > | 1
-6 | 1 | c_eqprice | < Equity tokens nominal value in XDAC > | 51
-7 | 1 | c_rating | < Company rating (int 0.00, default 0) > | 0
-8 | 1 | c_lfrate | < Company liability fund discount rate (default 10%) > | 51
-9 | 1 | c_lfcap | < Company liability fund cap (default 10% of initial capital in XDAC) > | 51
-10 | 1 | c_locked | < Company freeze (T,F) (default F) > | 0
-11 | 1 | c_coreid | < Core DB company ID > | 0
+< Company account name > | < Company name > | empty | empty | empty
 
-<!-- 12 | 1 | c_media | < URL to public articles or media > | 1 -->
+Table ***cmedia***
+* c_aname
+* c_title
+* c_media
+* c_mpublished
 
-Threshold 0 prohibits the company from changing record.
+No record needed at company deployment.
 
-Table ***company_contracts***
+
+Table ***c_contracts***
 * contract_id
 * contract_name
 * contract_ver
-* contracr_rdate
+* contract_rdate
 
 Initial record are:
 
-contract_id | contract_name | contract_ver | ucontracr_rdate
+contract_id | contract_name | contract_ver | contract_rdate
 --- | ----------- | ----- | --------
 1 | company contract | 1.0.0 | < Unix Timestamp >
 2 | storage contract | 1.0.0 | < Unix Timestamp >
 3 | lf contract | 1.0.0 | < Unix Timestamp >
 
 Each company smart contracts must have a name and a version number stored in ***company_contracts*** table. Other smart contracts or dApps will interact with storage contract before each call. Storage contract will return name and version number of the most recent contract.
-
-### 1.7.3.	Creating company contract
-
-Smart contract manages the transfer of funds between company account and liability fund. All received transactions must be distributed between the liability fund and company account based on the liability fund discount rate until the liability fund cap is reached.
 
 ### 1.7.4. Equity Tokens Issuance
 
@@ -221,15 +215,19 @@ Each investment received after reaching 51% will be separated in the list by a d
 
 ![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-60p-approval.jpg)
 
-If the investment is approved by the owner with 40% stake, approval percentage will change to 40% and the account will not be able to approve investment again. However, the same account can decline investment and vice versa.
+If the investment is approved by the owner with 40% stake, approval percentage will increase to 40% and the account will not be able to approve investment again. However, the same account can decline investment and vice versa.
 
 ![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-60p-approved.jpg)
 
-In case investment was declined, decline percentage will change to -40%.
+In case investment was declined, decline percentage will decrease to -40%.
 
 After investment approval reaches 51% of votes or more, investment is accepted and transferred from a core contract to company contract which distributes investment between account and liability fund.
 
 Declined investments by 51% of votes or more will be refunded from core contract back to account of the investor.
+
+### 1.9.5.	Company has unsold tokens
+
+If the company sold more than 51% of equity tokens owners can decide to terminate token sale and distribute remaining tokens proportionally to investors. This means that if an investor has bought 1% of company equity tokens, he/she will receive 1% of the unsold tokens.
 
 ## 1.10.	Buy Equity Tokens (Step 9)
 
@@ -253,3 +251,4 @@ After investors created a personal account and fund their account with XDAC coin
 ## 1.11.	Public Profile (Step 10)
 
 Public company profile accessible through link xdac.co/<account name>. Edit of public profile accessible with help of Scatter for permission Active. 
+
