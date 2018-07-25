@@ -148,7 +148,6 @@ Table ***cmedia***
 
 No record needed at company deployment.
 
-
 Table ***c_contracts***
 * contract_id
 * contract_name
@@ -170,16 +169,31 @@ Each company smart contracts must have a name and a version number stored in ***
 Deploy equity token contract with parameters specified by the company founder. If the initial supply is less than the total supply, only the amount of initial token supply is issued. Remaining tokens can be issued by company owners in the later stage.
 In case tokens have a lock-up period, tokens should not be transferable until lock up period expires.
 
-## 1.7.5.	Liability Fund Contract
+<!-- ### 1.7.5. Liability Fund Contract
 
 Liability fund is collateral in the form of smart contact holding XDAC tokens in case of the company debts or liabilities.
 Funds on liability fund during company existence can be accessed only by dispute representative board. In upcoming updates company owners will be able to increase or decrease the liability fund discount rate or cap.
 
-After a company is acquired, liquidated, or closed, a Liability Fund will be distributed between owners based on their respective stake in the company.
+After a company is acquired, liquidated, or closed, a Liability Fund will be distributed between owners based on their respective stake in the company.-->
 
-## 1.8.	Initial Capital Release (Step 7)
+## 1.8. Buy Equity Tokens (Step 7)
 
-After company contracts are deployed, nodejs will notify xDAC core and core contract will release equity funds to company contract.
+Anyone who has access to the Token Sale page can join equity token sale. Following situations can arise:
+
+### 1.8.1.	User doesn’t have Scatter
+After clicking on Buy button Create Personal Account in the sidebar is opened. After creating an account we will prompt the user to download Scatter.
+
+### 1.8.2.	User doesn’t have xDAC personal account
+After click on Buy button Create Personal Account in the sidebar is opened.
+
+### 1.8.3.	User doesn’t have XDAC coins
+Buy XDAC Coins in the sidebar is opened. 
+
+### 1.8.4.	User has ERC20 XDAC tokens
+Swap XDAC tokens for XDAC coins in the sidebar is opened.  
+
+### 1.8.5.	User has Scatter, account and coins
+After investors created a personal account and fund their account with XDAC coins, they can purchase equity in the company.
 
 ## 1.9.	Token Sale (Step 8)
 
@@ -229,26 +243,11 @@ Declined investments by 51% of votes or more will be refunded from core contract
 
 If the company sold more than 51% of equity tokens owners can decide to terminate token sale and distribute remaining tokens proportionally to investors. This means that if an investor has bought 1% of company equity tokens, he/she will receive 1% of the unsold tokens.
 
-## 1.10.	Buy Equity Tokens (Step 9)
+## 1.10.	Initial Capital Release (Step 9)
 
-Anyone who has access to the Token Sale page can join equity token sale. Following situations can arise:
+After company contracts are deployed, nodejs will notify xDAC core and core contract will release equity funds to company contract.
 
-### 1.10.1.	User doesn’t have Scatter
-After clicking on Buy button Create Personal Account in the sidebar is opened. After creating an account we will prompt the user to download Scatter.
-
-### 1.10.2.	User doesn’t have xDAC personal account
-After click on Buy button Create Personal Account in the sidebar is opened.
-
-### 1.10.3.	User doesn’t have XDAC coins
-Buy XDAC Coins in the sidebar is opened. 
-
-### 1.10.4.	User has ERC20 XDAC tokens
-Swap XDAC tokens for XDAC coins in the sidebar is opened.  
-
-### 1.10.5.	User has Scatter, account and coins
-After investors created a personal account and fund their account with XDAC coins, they can purchase equity in the company.
-
-## 1.11.	Public Profile (Step 10)
+## 1.11. Public Profile (Step 10)
 
 Public company profile accessible through link xdac.co/<account name>. Edit of public profile accessible with help of Scatter for permission Active. 
 
