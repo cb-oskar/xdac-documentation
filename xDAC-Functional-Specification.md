@@ -81,7 +81,7 @@ Core contract is a bridge between company registration dApp and a company accoun
 
 Table ***token***
 Column | Datatype | Size | Description
--|-|-|-|
+----|----|----|----|
 t_name | std::string | 20 | Token name (max 20 chars)
 t_tsuply | asset | 10 | Total supply (min 1)
 t_isupply | asset | 10 | Initial supply (min 1)
@@ -94,7 +94,7 @@ t_lockup_period_days | uint32_t | 4 | Lock-up period (max 9,999 days)
 
 Table ***settings***
 Column | Datatype | Size | Description
--|-|-|-|
+----|----|----|----|
 c_aname | account_name | 12 | Company account name
 c_author | account_name | 12 | Company founder
 c_createdts | uint64_t | 20 | Company creation timestamp
@@ -105,7 +105,7 @@ c_rating | uint32_t | 10 | Company performance rating
 
 Table ***meta***
 Column | Datatype | Size | Description
--|-|-|-|
+----|----|----|----|
 c_name | std::string | 30 | Company name (max 30 chars)
 c_desc | std::string | 1000 | Company description
 c_tag | std::string | 250 | Company short description (max 250 chars)
@@ -114,14 +114,14 @@ c_contact | std::string | 50 | Company contact email
 
 Table ***lfund***
 Column | Datatype | Size | Description
--|-|-|-|
+----|----|----|----|
 c_lfrate | double | 0.00 | Company liability discount rate
 c_lfcap | double | 10 | Company libility fund cap
 c_gained_lfcap | double | 10 | Company liability fund balance
 
 Table ***investors***
 Column | Datatype | Size | Description
--|-|-|-|
+----|----|----|----|
 i_pk | uint64_t | 20 | Investor public key
 i_caname | account_name | 12 | Company account name
 i_paname | account_name | 12 | Investor personal account name
@@ -158,7 +158,7 @@ Storage contract is database storing company information and records. At company
 
 Table ***cusers***
 Column | Datatype | Size | Description
--|-|-|-|
+----|----|----|----|
 cu_paname | account_name | 12 | Company member personal account name
 cu_role | std::string | 1 | O (owner - founder, investor or owner) or M (member - team member or advisor)
 cu_supervisor | account_name | 12 | Team member supervisor
@@ -168,12 +168,12 @@ cu_lname | std::string | 20 | Member last name
 Initial record is:
 
 cu_paname | cu_role | cu_fname | cu_lname
-- | - | - | -
+----|----|----|----|
 < Founder personal account name > | O | empty | empty
 
 Table ***cmeta***
 Column | Datatype | Size | Description
--|-|-|-|
+----|----|----|----|
 c_aname | account_name | 12 | Company account name
 c_name | std::string | 30 | Company name (max 30 chars)
 c_desc | std::string | 1000 | Company description
@@ -185,12 +185,12 @@ c_pimg | std::string | 0 |
 Initial records are:
 
 c_aname | c_name | c_desc | c_tag | c_contact | c_logo | c_pimg
-- | - | - | - | - | - | -
+----|----|----|----|----|----|----|
 < Company account name > | < Company name > | empty | empty | empty | empty | empty
 
 Table ***cmedia***
 Column | Datatype | Size | Description
--|-|-|-|
+----|----|----|----|
 c_aname | account_name | 12 | Company account name
 c_title | std::string | 100 | Media title
 c_media | std::string | 256 | Media link
