@@ -80,6 +80,7 @@ Proceeds from equity purchase are transferred to the core contract with all subm
 Core contract is a bridge between company registration dApp and a company account. It holds the investments until the company is created and deployed to the network. Furthermore, the core contract manages a and stores data in the central database of companies. The central database stores the following data:
 
 Table ***token***
+
 Column | Datatype | Size | Description
 ----|----|----|----|
 t_name | std::string | 20 | Token name (max 20 chars)
@@ -93,6 +94,7 @@ t_gained_xdacs | asset | 8 |
 t_lockup_period_days | uint32_t | 4 | Lock-up period (max 9,999 days) 
 
 Table ***settings***
+
 Column | Datatype | Size | Description
 ----|----|----|----|
 c_aname | account_name | 12 | Company account name
@@ -104,6 +106,7 @@ c_locked | bool | 1 | Company is live or frozen
 c_rating | uint32_t | 10 | Company performance rating
 
 Table ***meta***
+
 Column | Datatype | Size | Description
 ----|----|----|----|
 c_name | std::string | 30 | Company name (max 30 chars)
@@ -113,6 +116,7 @@ c_media | std::string | 256 | Link to company media
 c_contact | std::string | 50 | Company contact email
 
 Table ***lfund***
+
 Column | Datatype | Size | Description
 ----|----|----|----|
 c_lfrate | double | 0.00 | Company liability discount rate
@@ -120,6 +124,7 @@ c_lfcap | double | 10 | Company libility fund cap
 c_gained_lfcap | double | 10 | Company liability fund balance
 
 Table ***investors***
+
 Column | Datatype | Size | Description
 ----|----|----|----|
 i_pk | uint64_t | 20 | Investor public key
@@ -157,6 +162,7 @@ Smart contract manages the transfer of funds between company account and liabili
 Storage contract is database storing company information and records. At company creation database has following tables:
 
 Table ***cusers***
+
 Column | Datatype | Size | Description
 ----|----|----|----|
 cu_paname | account_name | 12 | Company member personal account name
@@ -172,6 +178,7 @@ cu_paname | cu_role | cu_fname | cu_lname
 < Founder personal account name > | O | empty | empty
 
 Table ***cmeta***
+
 Column | Datatype | Size | Description
 ----|----|----|----|
 c_aname | account_name | 12 | Company account name
@@ -189,6 +196,7 @@ c_aname | c_name | c_desc | c_tag | c_contact | c_logo | c_pimg
 < Company account name > | < Company name > | empty | empty | empty | empty | empty
 
 Table ***cmedia***
+
 Column | Datatype | Size | Description
 ----|----|----|----|
 c_aname | account_name | 12 | Company account name
