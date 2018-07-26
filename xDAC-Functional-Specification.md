@@ -14,7 +14,7 @@ b.	business owners, customers, team members, and other interested parties in xDA
 
 c.	contractors who undertake all or parts of the development, as optional illumination of the source of and background to the specific requirements to which they are working. 
 
-# 1.	Company Registration
+# 1.	Company Registration (PR-0100)
 
 ## 1.1.	Architecture
 
@@ -73,16 +73,61 @@ Data are correlated. If one is changed, other changes accordingly. After specify
 
 ![xDAC Buy Equity Tokens](/images/xDAC-buy-equity.jpg) 
 
-## 1.6.	Company Submission (Step 5)
+## 1.6.	Company Submission & Core Contract (Step 5)
 
 Proceeds from equity purchase are transferred to the core contract with all submitted data. 
 
-Core contract is a bridge between company registration dApp and a company account. It holds the investment until the company is created and deployed to the network. Furthermore, the core contract manages a database of companies and stores data in the central database. The central database stores the following data:
+Core contract is a bridge between company registration dApp and a company account. It holds the investments until the company is created and deployed to the network. Furthermore, the core contract manages a and stores data in the central database of companies. The central database stores the following data:
 
-* c_coreid - Company ID
-* c_name - Company name
-* c_aname - Company account name
-* t_symbol - Token symbol 
+Table ***token***
+Column | Datatype | Size | Description
+-|-|-|-|
+t_name | std::string | 20 | Token name (max 20 chars)
+t_tsuply | asset | 10 | Total supply (min 1)
+t_isupply | asset | 10 | Initial supply (min 1)
+t_price | double | 10 | Token price (min 0.001 XDAC)
+t_symbol | symbol_type | 8 | Token symbol (max 8 Chars) 
+t_tsuply_xdac | asset | 8 | Token total suply in XDAC
+t_isupply_xdac | asset | 8 | Token intial supply in XDAC
+t_gained_xdacs | asset | 8 | 
+t_lockup_period_days | uint32_t | 4 | Lock-up period (max 9,999 days) 
+
+Table ***settings***
+Column | Datatype | Size | Description
+-|-|-|-|
+c_aname | account_name | 12 | Company account name
+c_author | account_name | 12 | Company founder
+c_createdts | uint64_t | 20 | Company creation timestamp
+c_deployed | bool | 1 | Company account creation
+c_contract | bool | 1 | Company contract deployed
+c_locked | bool | 1 | Company is live or frozen
+c_rating | uint32_t | 10 | Company performance rating
+
+Table ***meta***
+Column | Datatype | Size | Description
+-|-|-|-|
+c_name | std::string | 30 | Company name (max 30 chars)
+c_desc | std::string | 1000 | Company description
+c_tag | std::string | 250 | Company short description (max 250 chars)
+c_media | std::string | 256 | Link to company media
+c_contact | std::string | 50 | Company contact email
+
+Table ***lfund***
+Column | Datatype | Size | Description
+-|-|-|-|
+c_lfrate | double | 0.00 | Company liability discount rate
+c_lfcap | double | 10 | Company libility fund cap
+c_gained_lfcap | double | 10 | Company liability fund balance
+
+Table ***investors***
+Column | Datatype | Size | Description
+-|-|-|-|
+i_pk | uint64_t | 20 | Investor public key
+i_caname | account_name | 12 | Company account name
+i_paname | account_name | 12 | Investor personal account name
+i_quantity | asset | 10 | Number of tokens investor holds
+i_tokens | asset | 10 | 
+i_issued | bool | 1 | Token issued TRUE or FALSE
 
 ## 1.7.	Deploying Company (Step 6)
 
@@ -112,39 +157,44 @@ Smart contract manages the transfer of funds between company account and liabili
 Storage contract is database storing company information and records. At company creation database has following tables:
 
 Table ***cusers***
-* cu_paname
-* cu_role
-* cu_fname
-* cu_lname
+Column | Datatype | Size | Description
+-|-|-|-|
+cu_paname | account_name | 12 | Company member personal account name
+cu_role | std::string | 1 | O (owner - founder, investor or owner) or M (member - team member or advisor)
+cu_supervisor | account_name | 12 | Team member supervisor
+cu_fname | std::string | 20 | Member first name
+cu_lname | std::string | 20 | Member last name
 
 Initial record is:
 
 cu_paname | cu_role | cu_fname | cu_lname
---- | ----------- | ----- | --------
-< Founder personal account name > | owner | empty | empty
-
-User roles: 
-* ***owner*** - founder, investor or owner
-* ***member*** - team member or advisor
+- | - | - | -
+< Founder personal account name > | O | empty | empty
 
 Table ***cmeta***
-* c_aname
-* c_name
-* c_desc
-* c_tag
-* c_contact
+Column | Datatype | Size | Description
+-|-|-|-|
+c_aname | account_name | 12 | Company account name
+c_name | std::string | 30 | Company name (max 30 chars)
+c_desc | std::string | 1000 | Company description
+c_tag | std::string | 20 | Company short description (max 250 chars)
+c_contact | std::string | 25 | Company contact email
+c_logo | std::string | 0 | 
+c_pimg | std::string | 0 | 
 
 Initial records are:
 
-c_aname | c_name | c_desc | c_tag | c_contact
---- | ----------- | ----- | -------- | --------
-< Company account name > | < Company name > | empty | empty | empty
+c_aname | c_name | c_desc | c_tag | c_contact | c_logo | c_pimg
+- | - | - | - | - | - | -
+< Company account name > | < Company name > | empty | empty | empty | empty | empty
 
 Table ***cmedia***
-* c_aname
-* c_title
-* c_media
-* c_mpublished
+Column | Datatype | Size | Description
+-|-|-|-|
+c_aname | account_name | 12 | Company account name
+c_title | std::string | 100 | Media title
+c_media | std::string | 256 | Media link
+c_mpublished | uint64_t | 20 | Published timestamp 
 
 No record needed at company deployment.
 
@@ -176,50 +226,51 @@ Funds on liability fund during company existence can be accessed only by dispute
 
 After a company is acquired, liquidated, or closed, a Liability Fund will be distributed between owners based on their respective stake in the company.-->
 
-## 1.8. Buy Equity Tokens (Step 7)
+# 2. Equity Tokens Sale (PR-1800) (Step 7) 
 
+## 2.1. Buy Equity Tokens
 Anyone who has access to the Token Sale page can join equity token sale. Following situations can arise:
 
-### 1.8.1.	User doesn’t have Scatter
+### 2.1.1. User doesn’t have Scatter
 After clicking on Buy button Create Personal Account in the sidebar is opened. After creating an account we will prompt the user to download Scatter.
 
-### 1.8.2.	User doesn’t have xDAC personal account
+### 2.1.2. User doesn’t have xDAC personal account
 After click on Buy button Create Personal Account in the sidebar is opened.
 
-### 1.8.3.	User doesn’t have XDAC coins
+### 2.1.3.	User doesn’t have XDAC coins
 Buy XDAC Coins in the sidebar is opened. 
 
-### 1.8.4.	User has ERC20 XDAC tokens
+### 2.1.4.	User has ERC20 XDAC tokens
 Swap XDAC tokens for XDAC coins in the sidebar is opened.  
 
-### 1.8.5.	User has Scatter, account and coins
+### 2.1.5.	User has Scatter, account and coins
 After investors created a personal account and fund their account with XDAC coins, they can purchase equity in the company.
 
-## 1.9.	Token Sale (Step 8)
+## 2.2.	Token Sale (Step 8)
 
 Company Token Sale is company crowdfunding option to raise funds from different investors or partners. Token sale page holds company summary information and a list of existing token holders. Anyone can access this page at xdac.co/s/< company account name > and purchase equity through Buy Equity Tokens button. This page can be shared with others via email.
 
 Following situations can arise during the token sale:
 
-### 1.9.1.	Company token sale 
+### 2.2.1.	Company token sale 
 
 The company disposition of tokens is available until all equity tokens are sold. Unsold equity tokens are available to public investors or partners.
 
 ![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-50p.jpg)
 
-### 1.9.2.	Company sold 100% of equity tokens
+### 2.2.2.	Company sold 100% of equity tokens
 
 If the company sold 100% of initial supply, Buy Equity Tokens option is no longer available. This round of token sale is closed. 
 
 ![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-100p.jpg) 
 
-### 1.9.3.	51% of equity tokens owned by one account
+### 2.2.3.	51% of equity tokens owned by one account
 
 If the company is controlled by a single account, the account owner has the authority to approve all new investments.
 
 ![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-60p.jpg) 
 
-### 1.9.4.	51% of equity tokens owned by multiple accounts
+### 2.2.4.	51% of equity tokens owned by multiple accounts
 
 Investments up to 51% are accepted without approval. As soon as the amount of sold equity tokens reaches 51% or more, authorization of new investments is required by the majority of company owners holding at least 51%.
 
@@ -239,15 +290,15 @@ After investment approval reaches 51% of votes or more, investment is accepted a
 
 Declined investments by 51% of votes or more will be refunded from core contract back to account of the investor.
 
-### 1.9.5.	Company has unsold tokens
+### 2.2.5.	Company has unsold tokens
 
 If the company sold more than 51% of equity tokens owners can decide to terminate token sale and distribute remaining tokens proportionally to investors. This means that if an investor has bought 1% of company equity tokens, he/she will receive 1% of the unsold tokens.
 
-## 1.10.	Initial Capital Release (Step 9)
+## 2.3.	Initial Capital Release (Step 9)
 
 After company contracts are deployed, nodejs will notify xDAC core and core contract will release equity funds to company contract.
 
-## 1.11. Public Profile (Step 10)
+# 3. Public Profile (PR-0300) (Step 10)
 
 Public company profile accessible through link xdac.co/<account name>. Edit of public profile accessible with help of Scatter for permission Active. 
 

@@ -74,7 +74,7 @@ UR-1000 | UN-0300 | Dispute Management | Cheap and simple dispute resolution via
 UR-1100 | UN-0400 | Team Management | Manage team, their positions, and permissions, hire new team member
 UR-1200 | UN-0400 | Automated Evaluation | Evaluate automatically team members based on their performance
 UR-1300 | UN-0500 | Project Management | Manage projects and tasks, assign tasks to team members and pay them automatically when the task is finished
-UR-1400 | UN-0600 | Fundraising Tools | Issue new tokens and start ICO or private sale
+UR-1400 | UN-0600 | Fundraising Tools | Issue new equity tokens and start ICO or private sale
 UR-1500 | UN-0700 | Voting | Owners can submit new proposals and vote on platform or company proposals
 UR-1600 | UN-0800 | Incentives | Business owners should be incentivized for using an xDAC platform
 
@@ -104,7 +104,7 @@ PR-1400 | UR-1100 | Team Management | S | Add option to hire new team member and
 PR-1500 | UR-1100 | Open Positions | C | Create a public list of open positions where job seekers can search for open positions.
 PR-1600 | UR-1200 |  Performance Rating | S | Team members, teams and company will be evaluated automaticaly based on tracking work ethic and delivering tasks on time.
 PR-1700 | UR-1300 |  Project Management | S | Add project and task management DApp with automated payroll system. 
-PR-1800 | UR-1400 |  Fundraising Tools | S | Create tools for a company to issue new tokens for public or private distribution or to start ICO through their public profile. 
+PR-1800 | UR-1400 |  Fundraising Tools | S | Create tools for a company to issue new equity tokens for public or private distribution or to start ICO through their public profile. 
 PR-2000 | UR-1500 |  Company Voting | M | Integrate voting system for owners to vote on their internal proposals. 
 PR-2100 | UR-1500 |  Platform Voting | M | Integrate voting system for platform participants to vote for xDAC Delegates and platform proposals. 
 PR-2200 | UR-1600 |  Platform Profit Distribution | M | Integrate distribution of platform profit based on performance rating. Profit will be distributed back to companies, their team members, xDAC Delegates and block producers. Profit will be generated from transaction fees.
