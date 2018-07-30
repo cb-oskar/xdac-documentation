@@ -14,13 +14,29 @@ b.	business owners, customers, team members, and other interested parties in xDA
 
 c.	contractors who undertake all or parts of the development, as optional illumination of the source of and background to the specific requirements to which they are working. 
 
-# 1.	Company Registration (PR-0100)
+# xDAC Platform dApp (Alpha)
 
-## 1.1.	Architecture
+Alpha version of the xDAC platform will provide access to the homepage with a list of existing xDAC companies, registration of the new xDAC company, token sale and public profile (dashboard) of the xDAC company.
+
+## Flowchart
+
+![xDAC dApp flowchart Flowchart](/images/xDAC-dApp-flowchart.jpg)
+
+# 1. Home Page
+
+The xDAC homepage provides easy access to existing xDAC companies through the list in tile form and "search" option. The homepage offers selecting companies by token sale status (Active or Completed) of selection by company industry.
+
+Header od the page hold button Start a new company. Button Buy XDAC is placed in the footer of the page along with social media links and links to About and ICO pages or xDAC network tracker and wallet.
+
+![xDAC dApp flowchart Flowchart](/images/xDAC-homepage.jpg)
+
+# 2. Company Registration (PR-0100)
+
+## 2.1.	Architecture
 
 ![xDAC Registration Flowchart](/images/xDAC_register-comp-flowchart-v1.07.jpg)
 
-## 1.2.	Company Registration Form (Step 1)
+## 2.2.	Company Registration Form (Step 1)
 
 The user sends a request to register a new company. Registration form contains: 
 
@@ -39,7 +55,7 @@ The minimum amount of required capital is 100 XDAC, therefore initial supply or 
 
 ![xDAC Registration form](/images/xDAC-Company-registration-form.jpg)
 
-## 1.3.	Create New Personal Account (Step 2)
+## 2.3.	Create New Personal Account (Step 2)
 
 If the user doesn’t have a personal account yet, it can be created in sidebar form and deployed to the network free of charge. Sidebar form contains  
 
@@ -56,13 +72,13 @@ xDAC needs to be an owner of the account due to the further function of that wil
 
 ![xDAC New Personal Account Done](/images/xDAC-new-personal-account-done.jpg)
 
-## 1.4.	Data Verification (Step 3)
+## 2.4.	Data Verification (Step 3)
 
 The request is sent to core contract and checked for valid data and duplicates. All field must be filled out. Company name, company account name and token symbol must be unique.  If duplicates are found, we will display “whois” option to locate an existing company with identical data. Initial supply should not exceed total supply. 
 
 ![xDAC Registration form error](/images/xDAC-Company-registration-form-error.jpg) 
 
-## 1.5.	Buy Equity in Company (Step 4)
+## 2.5.	Buy Equity in Company (Step 4)
 
 After data validation, Register Company button will open the Buy Equity sidebar. The sidebar contains a form with:
 
@@ -73,7 +89,7 @@ Data are correlated. If one is changed, other changes accordingly. After specify
 
 ![xDAC Buy Equity Tokens](/images/xDAC-buy-equity.jpg) 
 
-## 1.6.	Company Submission & Core Contract (Step 5)
+## 2.6.	Company Submission & Core Contract (Step 5)
 
 Proceeds from equity purchase are transferred to the core contract with all submitted data. 
 
@@ -134,11 +150,11 @@ i_quantity | asset | 10 | Number of tokens investor holds
 i_tokens | asset | 10 | 
 i_issued | bool | 1 | Token issued TRUE or FALSE
 
-## 1.7.	Deploying Company (Step 6)
+## 2.7.	Deploying Company (Step 6)
 
 Core contract is responsible for deploying company through nodejs service to xDAC network while investment remains on core contract. Deploying process has the following steps:
 
-### 1.7.1.	Deploying company account
+### 2.7.1.	Deploying company account
 
 A new multi-sig account on the xDAC network is created with xDAC as the only owner. Permissions of created account are: 
 * xDAC (***owner***) weight 1, threshold 1 (will be removed after platform development),
@@ -153,11 +169,11 @@ A new multi-sig account on the xDAC network is created with xDAC as the only own
 
 ***publish*** authority is used for making other low-level updates, transferring funds below the threshold, hiring team members or resolving disputes. 
 
-### 1.7.2.	Creating company contract
+### 2.7.2.	Creating company contract
 
 Smart contract manages the transfer of funds between company account and liability fund. All received transactions must be distributed between the liability fund and company account based on the liability fund discount rate until the liability fund cap is reached.
 
-### 1.7.3.	Creating company database
+### 2.7.3.	Creating company database
 
 Storage contract is database storing company information and records. At company creation database has following tables:
 
@@ -222,7 +238,7 @@ contract_id | contract_name | contract_ver | contract_rdate
 
 Each company smart contracts must have a name and a version number stored in ***company_contracts*** table. Other smart contracts or dApps will interact with storage contract before each call. Storage contract will return name and version number of the most recent contract.
 
-### 1.7.4. Equity Tokens Issuance
+### 2.7.4. Equity Tokens Issuance
 
 Deploy equity token contract with parameters specified by the company founder. If the initial supply is less than the total supply, only the amount of initial token supply is issued. Remaining tokens can be issued by company owners in the later stage.
 In case tokens have a lock-up period, tokens should not be transferable until lock up period expires.
@@ -234,51 +250,51 @@ Funds on liability fund during company existence can be accessed only by dispute
 
 After a company is acquired, liquidated, or closed, a Liability Fund will be distributed between owners based on their respective stake in the company.-->
 
-# 2. Equity Tokens Sale (PR-1800) (Step 7) 
+# 3. Equity Tokens Sale (PR-1800) (Step 7) 
 
-## 2.1. Buy Equity Tokens
+## 3.1. Buy Equity Tokens
 Anyone who has access to the Token Sale page can join equity token sale. Following situations can arise:
 
-### 2.1.1. User doesn’t have Scatter
+### 3.1.1. User doesn’t have Scatter
 After clicking on Buy button Create Personal Account in the sidebar is opened. After creating an account we will prompt the user to download Scatter.
 
-### 2.1.2. User doesn’t have xDAC personal account
+### 3.1.2. User doesn’t have xDAC personal account
 After click on Buy button Create Personal Account in the sidebar is opened.
 
-### 2.1.3.	User doesn’t have XDAC coins
+### 3.1.3.	User doesn’t have XDAC coins
 Buy XDAC Coins in the sidebar is opened. 
 
-### 2.1.4.	User has ERC20 XDAC tokens
+### 3.1.4.	User has ERC20 XDAC tokens
 Swap XDAC tokens for XDAC coins in the sidebar is opened.  
 
-### 2.1.5.	User has Scatter, account and coins
+### 3.1.5.	User has Scatter, account and coins
 After investors created a personal account and fund their account with XDAC coins, they can purchase equity in the company.
 
-## 2.2.	Token Sale (Step 8)
+## 3.2.	Token Sale (Step 8)
 
 Company Token Sale is company crowdfunding option to raise funds from different investors or partners. Token sale page holds company summary information and a list of existing token holders. Anyone can access this page at xdac.co/s/< company account name > and purchase equity through Buy Equity Tokens button. This page can be shared with others via email.
 
 Following situations can arise during the token sale:
 
-### 2.2.1.	Company token sale 
+### 3.2.1.	Company token sale 
 
 The company disposition of tokens is available until all equity tokens are sold. Unsold equity tokens are available to public investors or partners.
 
 ![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-50p.jpg)
 
-### 2.2.2.	Company sold 100% of equity tokens
+### 3.2.2.	Company sold 100% of equity tokens
 
 If the company sold 100% of initial supply, Buy Equity Tokens option is no longer available. This round of token sale is closed. 
 
 ![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-100p.jpg) 
 
-### 2.2.3.	51% of equity tokens owned by one account
+### 3.2.3.	51% of equity tokens owned by one account
 
 If the company is controlled by a single account, the account owner has the authority to approve all new investments.
 
 ![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-60p.jpg) 
 
-### 2.2.4.	51% of equity tokens owned by multiple accounts
+### 3.2.4.	51% of equity tokens owned by multiple accounts
 
 Investments up to 51% are accepted without approval. As soon as the amount of sold equity tokens reaches 51% or more, authorization of new investments is required by the majority of company owners holding at least 51%.
 
@@ -298,15 +314,16 @@ After investment approval reaches 51% of votes or more, investment is accepted a
 
 Declined investments by 51% of votes or more will be refunded from core contract back to account of the investor.
 
-### 2.2.5.	Company has unsold tokens
+### 3.2.5.	Company has unsold tokens
 
 If the company sold more than 51% of equity tokens owners can decide to terminate token sale and distribute remaining tokens proportionally to investors. This means that if an investor has bought 1% of company equity tokens, he/she will receive 1% of the unsold tokens.
 
-## 2.3.	Initial Capital Release (Step 9)
+## 3.3.	Initial Capital Release (Step 9)
 
 After company contracts are deployed, nodejs will notify xDAC core and core contract will release equity funds to company contract.
 
-# 3. Public Profile (PR-0300) (Step 10)
+# 4. Company Dashboard - Public Profile (PR-0300) (Step 10)
 
 Public company profile accessible through link xdac.co/<account name>. Edit of public profile accessible with help of Scatter for permission Active. 
 
+![xDAC Company Dashboard](/images/xDAC-company-dashboard.jpg)
