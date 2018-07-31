@@ -24,7 +24,7 @@ Alpha version of the xDAC platform will provide access to the homepage with a li
 
 # 1. Home Page
 
-The xDAC homepage provides easy access to existing xDAC companies through the list in form of tiles and "search" option. The homepage offers selecting companies by token sale status (Active or Completed) or by company industry.
+The xDAC homepage provides easy access to existing xDAC companies through the list in form of tiles and "search" option. Search option searches in core database by company name, token symbol or company account name. The homepage offers filtering companies by token sale status (Active or Completed) or by company industry.
 
 The header of the page holds button "Start new company". Button "Buy XDAC" is placed in the footer of the page along with social media links and links to About and ICO pages or xDAC network tracker and wallet.
 
@@ -40,16 +40,52 @@ The header of the page holds button "Start new company". Button "Buy XDAC" is pl
 
 The user sends a request to register a new company. Registration form contains: 
 
-*	c_name - Company name (max 30 chars)
-*	c_aname - Company account name (12 [a-z12345.])
-*	p_aname - Personal account name 
-*	t_name - Token name (max 30 chars) 
-*	t_symbol - Token symbol (max 8 Chars) 
-*	t_tsuply - Total supply (min 1)
-*	t_isupply - Initial supply (min 1)
-*	t_price - Token price (min 0.001 XDAC) 
-*	t_lockp - Lock-up period (max 9,999 days) 
+Column | Datatype | Size | Description
+----|----|----|----|
+c_name | std::string | 30 | Company name
+c_aname | account_name | 12 | Company account name
+p_aname | account_name | 12 | Personal account name
+c_industry | uint32_t | 10 | Industry type
+t_name | std::string | 20 | Token name
+t_symbol | symbol_type | 8 | Token symbol
+t_tsuply | asset | 8 | Total supply
+t_isupply | asset | 8 | Initial supply
+t_price | double | 10 | Token price  (min 0.001 XDAC) 
+t_lockup_period_days | uint32_t | 4 | Lock-up period (max 9,999 days) 
+
 *	Required intial capital (t_isupply * t_price)
+
+**Industry types:**
+<option value="art">Art</option>
+<option value="artificial-intelligence">Artificial Intelligence</option>
+<option value="banking">Banking</option>
+<option value="big-data">Big Data</option>
+<option value="business-services">Business services</option>
+<option value="casino-gambling">Casino &amp; Gambling</option>
+<option value="charity">Charity</option>
+<option value="communication">Communication</option>
+<option value="cryptocurrency">Cryptocurrency</option>
+<option value="education">Education</option>
+<option value="electronics">Electronics</option>
+<option value="energy">Energy</option>
+<option value="entertainment">Entertainment</option>
+<option value="health">Health</option>
+<option value="infrastructure">Infrastructure</option>
+<option value="internet">Internet</option>
+<option value="investment">Investment</option>
+<option value="legal">Legal</option>
+<option value="manufacturing">Manufacturing</option>
+<option value="media">Media</option>
+<option value="other">Other</option>
+<option value="platform">Platform</option>
+<option value="real-estate">Real estate</option>
+<option value="retail">Retail</option>
+<option value="smart-contract">Smart Contract</option>
+<option value="software">Software</option>
+<option value="sports">Sports</option>
+<option value="tourism">Tourism</option>
+<option value="virtual-reality">Virtual Reality</option>
+
 
 The minimum amount of required capital is 100 XDAC, therefore initial supply or token price must be set the way so require capital reaches at least 100 XDAC.
 
@@ -74,11 +110,11 @@ xDAC needs to be an owner of the account due to the further function of that wil
 
 ## 2.4.	Data Verification (Step 3)
 
-The request is sent to core contract and checked for valid data and duplicates. All field must be filled out. Company name, company account name and token symbol must be unique.  If duplicates are found, we will display “whois” option to locate an existing company with identical data. Initial supply should not exceed total supply. 
+The request is sent to core contract and checked for valid data and duplicates. All form field must be filled out. Company name, company account name and token symbol must be unique. If duplicates are found, we will display “whois” option to locate an existing company with identical data. Whois link will open related company dashboard in new tab. Initial supply should not exceed total supply. 
 
 ![xDAC Registration form error](/images/xDAC-Company-registration-form-error.jpg) 
 
-## 2.5.	Buy Equity in Company (Step 4)
+## 2.5.	Buy Equity in New Company (Step 4)
 
 After data validation, Register Company button will open the Buy Equity sidebar. The sidebar contains a form with:
 
@@ -93,7 +129,7 @@ Data are correlated. If one is changed, other changes accordingly. After specify
 
 Proceeds from equity purchase are transferred to the core contract with all submitted data. 
 
-Core contract is a bridge between company registration dApp and a company account. It holds the investments until the company is created and deployed to the network. Furthermore, the core contract manages a and stores data in the central database of companies. The central database stores the following data:
+Core contract is a bridge between company registration dApp and a company account. It holds the investments until the company is created and deployed to the network. Furthermore, the core contract manages and stores data in the central database of companies. The central database stores the following data:
 
 Table ***token***
 
@@ -104,9 +140,7 @@ t_tsuply | asset | 10 | Total supply (min 1)
 t_isupply | asset | 10 | Initial supply (min 1)
 t_price | double | 10 | Token price (min 0.001 XDAC)
 t_symbol | symbol_type | 8 | Token symbol (max 8 Chars) 
-t_tsuply_xdac | asset | 8 | Token total suply in XDAC
-t_isupply_xdac | asset | 8 | Token intial supply in XDAC
-t_gained_xdacs | asset | 8 | 
+t_gained_xdacs | asset | 8 | The sum of received investments in XDAC
 t_lockup_period_days | uint32_t | 4 | Lock-up period (max 9,999 days) 
 
 Table ***settings***
@@ -114,7 +148,7 @@ Table ***settings***
 Column | Datatype | Size | Description
 ----|----|----|----|
 c_aname | account_name | 12 | Company account name
-c_author | account_name | 12 | Company founder
+c_founder | account_name | 12 | Company founder
 c_createdts | uint64_t | 20 | Company creation timestamp
 c_deployed | bool | 1 | Company account creation
 c_contract | bool | 1 | Company contract deployed
@@ -136,8 +170,8 @@ Table ***lfund***
 Column | Datatype | Size | Description
 ----|----|----|----|
 c_lfrate | double | 0.00 | Company liability discount rate
-c_lfcap | double | 10 | Company libility fund cap
-c_gained_lfcap | double | 10 | Company liability fund balance
+c_lfcap | double | 10 | Cap of company libility fund 
+c_lfbalance | double | 10 | Balance of company liability fund 
 
 Table ***investors***
 
@@ -149,6 +183,27 @@ i_paname | account_name | 12 | Investor personal account name
 i_quantity | asset | 10 | Number of tokens investor holds
 i_tokens | asset | 10 | 
 i_issued | bool | 1 | Token issued TRUE or FALSE
+
+Table ***investmettx***
+
+Column | Datatype | Size | Description
+----|----|----|----|
+itx_pk | uint64_t | 20 | Investment tx public key
+itx_caname | account_name | 12 | Investment tx company account name
+itx_paname | account_name | 12 | Investment tx personal account name
+itx_quantity | asset | 10 |
+itx_tokens | asset | 10 | 
+
+Table ***investmentvotes***
+
+Column | Datatype | Size | Description
+----|----|----|----|
+iv_pk | uint64_t | 20 | 
+itx_pk | uint64_t | 12 | 
+i_pk | uint64_t | 12 | 
+iv_caname | account_name | 10 |
+iv_paname | account_name | 10 | 
+iv_approve | bool | 1 | 
 
 ## 2.7.	Deploying Company (Step 6)
 
@@ -199,28 +254,38 @@ Column | Datatype | Size | Description
 ----|----|----|----|
 c_aname | account_name | 12 | Company account name
 c_name | std::string | 30 | Company name (max 30 chars)
+c_industry | uint32_t | 10 | Industry type
 c_desc | std::string | 1000 | Company description
 c_tag | std::string | 20 | Company short description (max 250 chars)
-c_contact | std::string | 25 | Company contact email
 c_logo | std::string | 0 | 
-c_pimg | std::string | 0 | 
 
 Initial records are:
 
-c_aname | c_name | c_desc | c_tag | c_contact | c_logo | c_pimg
-----|----|----|----|----|----|----|
-< Company account name > | < Company name > | empty | empty | empty | empty | empty
+c_aname | c_name | c_industry | c_desc | c_tag | c_contact | c_logo | c_pimg
+----|----|----|----|----|----|----|----|
+< Company account name > | < Company name > | < Industry type > | empty | empty | empty | empty
 
 Table ***cmedia***
 
 Column | Datatype | Size | Description
 ----|----|----|----|
 c_aname | account_name | 12 | Company account name
-c_title | std::string | 100 | Media title
+c_type | std::string | 30 | Media type
 c_media | std::string | 256 | Media link
 c_mpublished | uint64_t | 20 | Published timestamp 
 
-No record needed at company deployment.
+Media types:
+* Whitepaper
+* Onepager
+* Video
+* Facebook
+* Twitter
+* Reddit
+* Github
+* Email
+* URL
+* Telegram
+* Bitcointalk
 
 Table ***c_contracts***
 * contract_id
@@ -280,7 +345,7 @@ Following situations can arise during the token sale:
 
 The company disposition of tokens is available until all equity tokens are sold. Unsold equity tokens are available to public investors or partners.
 
-![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-50p.jpg)
+![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-50p.jpg)
 
 ![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-buy-offer.jpg)
 
@@ -288,27 +353,27 @@ The company disposition of tokens is available until all equity tokens are sold.
 
 If the company sold 100% of initial supply, Buy Equity Tokens option is no longer available. This round of token sale is closed. 
 
-![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-100p.jpg) 
+![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-100p.jpg) 
 
 ### 3.2.3.	51% of equity tokens owned by one account
 
 If the company is controlled by a single account, the account owner has the authority to approve all new investments.
 
-![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-60p.jpg) 
+![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-60p.jpg) 
 
 ### 3.2.4.	51% of equity tokens owned by multiple accounts
 
 Investments up to 51% are accepted without approval. As soon as the amount of sold equity tokens reaches 51% or more, authorization of new investments is required by the majority of company owners holding at least 51%.
 
-![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-60p-3.jpg)
+![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-60p-3.jpg)
 
 Each investment received after reaching 51% will be separated in the list by a different color and marked with three dots (“…”) representing pending status. Pending status is visible to the public. Owners with installed Scatter can see drop down options to accept or decline investment.
 
-![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-60p-approval.jpg)
+![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-40p-approval.jpg)
 
 If the investment is approved by the owner with 40% stake, approval percentage will increase to 40% and the account will not be able to approve investment again. However, the same account can decline investment and vice versa.
 
-![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-60p-approved.jpg)
+![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-40p-approved.jpg)
 
 In case investment was declined, decline percentage will decrease to -40%.
 
@@ -318,7 +383,7 @@ Declined investments by 51% of votes or more will be refunded from core contract
 
 ### 3.2.4.	Buy offer canceled by investor
 
-![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-cancel-offer.jpg)
+![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-cancel-offer.jpg)
 
 ### 3.2.5.	Company has unsold tokens
 
