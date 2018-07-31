@@ -24,9 +24,9 @@ Alpha version of the xDAC platform will provide access to the homepage with a li
 
 # 1. Home Page
 
-The xDAC homepage provides easy access to existing xDAC companies through the list in tile form and "search" option. The homepage offers selecting companies by token sale status (Active or Completed) of selection by company industry.
+The xDAC homepage provides easy access to existing xDAC companies through the list in form of tiles and "search" option. The homepage offers selecting companies by token sale status (Active or Completed) or by company industry.
 
-Header od the page hold button Start a new company. Button Buy XDAC is placed in the footer of the page along with social media links and links to About and ICO pages or xDAC network tracker and wallet.
+The header of the page holds button "Start new company". Button "Buy XDAC" is placed in the footer of the page along with social media links and links to About and ICO pages or xDAC network tracker and wallet.
 
 ![xDAC dApp flowchart Flowchart](/images/xDAC-homepage.jpg)
 
@@ -282,6 +282,8 @@ The company disposition of tokens is available until all equity tokens are sold.
 
 ![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-50p.jpg)
 
+![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-buy-offer.jpg)
+
 ### 3.2.2.	Company sold 100% of equity tokens
 
 If the company sold 100% of initial supply, Buy Equity Tokens option is no longer available. This round of token sale is closed. 
@@ -313,6 +315,10 @@ In case investment was declined, decline percentage will decrease to -40%.
 After investment approval reaches 51% of votes or more, investment is accepted and transferred from a core contract to company contract which distributes investment between account and liability fund.
 
 Declined investments by 51% of votes or more will be refunded from core contract back to account of the investor.
+
+### 3.2.4.	Buy offer canceled by investor
+
+![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-cancel-offer.jpg)
 
 ### 3.2.5.	Company has unsold tokens
 
