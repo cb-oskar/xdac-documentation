@@ -344,7 +344,7 @@ Swap XDAC tokens for XDAC coins in the sidebar is opened.
 
 ### 3.1.5.	Investor submitting offer
 
-After the company sold 51% of equity tokens, all new investments are submitted in form of offer and owners can decide to accept or decline the offer. There is no limitation on the offer amount.
+After the company sold 51% of equity tokens, all new investments are submitted in form of offer and owners can decide to accept or decline the offer. The offer must be equal to or greater than the amount of nominal token value.
 The offered amount is transferred to the company core contract. Approval of investment transfers funds to the company. Declined offers are refunded back to the investor.  
 
 ![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-buy-offer.jpg)
@@ -377,7 +377,7 @@ If the company is controlled by a single account, the account owner has the auth
 
 ![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-60p.jpg) 
 
-After the company sold 51% of equity tokens, all new investments are submitted in form of offer and owners can decide to accept or decline the offer. There is no limitation on the offer amount.
+After the company sold 51% of equity tokens, all new investments are submitted in form of offer and owners can decide to accept or decline the offer. The offer must be equal to or greater than the amount of nominal token value.
 The offered amount is transferred to the company core contract. Approval of investment transfers funds to the company. Declined offers are refunded back to the investor.  
 
 ![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-buy-offer.jpg)
