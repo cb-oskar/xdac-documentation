@@ -86,7 +86,6 @@ t_lockup_period_days | uint32_t | 4 | Lock-up period (max 9,999 days)
 <option value="tourism">Tourism</option>
 <option value="virtual-reality">Virtual Reality</option>
 
-
 The minimum amount of required capital is 100 XDAC, therefore initial supply or token price must be set the way so require capital reaches at least 100 XDAC.
 
 ![xDAC Registration form](/images/xDAC-Company-registration-form.jpg)
@@ -184,7 +183,7 @@ i_quantity | asset | 10 | Number of tokens investor holds
 i_tokens | asset | 10 | 
 i_issued | bool | 1 | Token issued TRUE or FALSE
 
-Table ***investmettx***
+Table ***investmenttx***
 
 Column | Datatype | Size | Description
 ----|----|----|----|
@@ -318,21 +317,40 @@ After a company is acquired, liquidated, or closed, a Liability Fund will be dis
 # 3. Equity Tokens Sale (PR-1800) (Step 7) 
 
 ## 3.1. Buy Equity Tokens
-Anyone who has access to the Token Sale page can join equity token sale. Following situations can arise:
 
-### 3.1.1. User doesn’t have Scatter
+Anyone who has access to the Token Sale page can join equity token sale by submitting an offer to purchase tokens. Offer can be submitted in any amount and company o Following situations can arise:
+
+### 3.1.1. Investor doesn’t have Scatter
+
 After clicking on Buy button Create Personal Account in the sidebar is opened. After creating an account we will prompt the user to download Scatter.
 
-### 3.1.2. User doesn’t have xDAC personal account
+### 3.1.2. Investor doesn’t have xDAC personal account
+
 After click on Buy button Create Personal Account in the sidebar is opened.
 
-### 3.1.3.	User doesn’t have XDAC coins
+![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-personal-account.jpg)
+
+### 3.1.3.	Investor doesn’t have XDAC coins
+
 Buy XDAC Coins in the sidebar is opened. 
 
-### 3.1.4.	User has ERC20 XDAC tokens
+![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-buy-xdac.jpg)
+
+### 3.1.4.	Investor has ERC20 XDAC tokens
+
 Swap XDAC tokens for XDAC coins in the sidebar is opened.  
 
-### 3.1.5.	User has Scatter, account and coins
+![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-swap.jpg)
+
+### 3.1.5.	Investor submitting offer
+
+After the company sold 51% of equity tokens, all new investments are submitted in form of offer and owners can decide to accept or decline the offer. There is no limitation on the offer amount.
+The offered amount is transferred to the company core contract. Approval of investment transfers funds to the company. Declined offers are refunded back to the investor.  
+
+![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-buy-offer.jpg)
+
+### 3.1.6.	Investor has Scatter, account and coins
+
 After investors created a personal account and fund their account with XDAC coins, they can purchase equity in the company.
 
 ## 3.2.	Token Sale (Step 8)
@@ -347,35 +365,38 @@ The company disposition of tokens is available until all equity tokens are sold.
 
 ![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-50p.jpg)
 
-![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-buy-offer.jpg)
+### 3.2.2.	Company owned by single owner
 
-### 3.2.2.	Company sold 100% of equity tokens
-
-If the company sold 100% of initial supply, Buy Equity Tokens option is no longer available. This round of token sale is closed. 
+If the company sold 100% of initial supply to single owner, Buy Equity Tokens option is no longer available. This round of token sale is completed. 
 
 ![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-100p.jpg) 
 
 ### 3.2.3.	51% of equity tokens owned by one account
 
-If the company is controlled by a single account, the account owner has the authority to approve all new investments.
+If the company is controlled by a single account, the account owner has the authority to approve all new investment offers.
 
 ![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-60p.jpg) 
 
+After the company sold 51% of equity tokens, all new investments are submitted in form of offer and owners can decide to accept or decline the offer. There is no limitation on the offer amount.
+The offered amount is transferred to the company core contract. Approval of investment transfers funds to the company. Declined offers are refunded back to the investor.  
+
+![xDAC Buy Equity Tokens](/images/xDAC-Token-Sale-buy-offer.jpg)
+
 ### 3.2.4.	51% of equity tokens owned by multiple accounts
 
-Investments up to 51% are accepted without approval. As soon as the amount of sold equity tokens reaches 51% or more, authorization of new investments is required by the majority of company owners holding at least 51%.
+Investments up to 51% are accepted without approval and in nominal value. As soon as the amount of sold equity tokens reaches 51% or more, authorization of new investment offers is required by the owners holding at least 51%.
 
 ![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-60p-3.jpg)
 
-Each investment received after reaching 51% will be separated in the list by a different color and marked with three dots (“…”) representing pending status. Pending status is visible to the public. Owners with installed Scatter can see drop down options to accept or decline investment.
+Each investment received after reaching 51% will be separated in the list by a different color and marked with three dots (“…”) representing pending status. Pending status is visible to the public. Owners with installed Scatter can see arrow option which let them vote on accepting or declining the investment.
 
 ![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-40p-approval.jpg)
 
-If the investment is approved by the owner with 40% stake, approval percentage will increase to 40% and the account will not be able to approve investment again. However, the same account can decline investment and vice versa.
+If the investment is approved by the owner with 40% stake, approval percentage will increase to 40% and the account will not be able to approve investment again. However, the same account can decline investment and reset approval.
+
+Progress bar below investment offer shows voting status for owners to see which transactions still need voting.
 
 ![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-40p-approved.jpg)
-
-In case investment was declined, decline percentage will decrease to -40%.
 
 After investment approval reaches 51% of votes or more, investment is accepted and transferred from a core contract to company contract which distributes investment between account and liability fund.
 
@@ -383,15 +404,17 @@ Declined investments by 51% of votes or more will be refunded from core contract
 
 ### 3.2.4.	Buy offer canceled by investor
 
+An investor can decide to cancel own offer at any time. Offer is automatically removed from the list and refunded back to investor account.
+
 ![xDAC Equity Tokens Sale](/images/xDAC-Token-Sale-cancel-offer.jpg)
 
 ### 3.2.5.	Company has unsold tokens
 
-If the company sold more than 51% of equity tokens owners can decide to terminate token sale and distribute remaining tokens proportionally to investors. This means that if an investor has bought 1% of company equity tokens, he/she will receive 1% of the unsold tokens.
+If the company sold more than 51% of equity tokens, owners can decide to terminate token sale and distribute remaining tokens proportionally to investors. This means that if an investor has bought 1% of company equity tokens, he/she will receive 1% of the unsold tokens. This option will be available from company dashboard.
 
-## 3.3.	Initial Capital Release (Step 9)
+## 3.3.	Release of funds (Step 9)
 
-After company contracts are deployed, nodejs will notify xDAC core and core contract will release equity funds to company contract.
+After company contracts are deployed, nodejs will notify xDAC core and core contract will release equity funds to company contract and liability fund.
 
 # 4. Company Dashboard - Public Profile (PR-0300) (Step 10)
 
