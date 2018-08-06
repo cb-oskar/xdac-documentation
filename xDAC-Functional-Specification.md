@@ -418,6 +418,10 @@ After company contracts are deployed, nodejs will notify xDAC core and core cont
 
 # 4. Company Dashboard - Public Profile (PR-0300) (Step 10)
 
-Public company profile accessible through link xdac.co/<account name>. Edit of public profile accessible with help of Scatter for permission Active. 
+Public company profile accessible through link xdac.co/<account name>. Edit of public profile accessible with help of Scatter for permission Active.
 
 ![xDAC Company Dashboard](/images/xDAC-company-dashboard.jpg)
+
+Edit option opens a form for editing company logo, tag, description of media links.   
+
+![xDAC Company Dashboard Edit Story](/images/xDAC-company-dashboard-edit.jpg)
