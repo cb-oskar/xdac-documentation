@@ -113,6 +113,21 @@ The request is sent to core contract and checked for valid data and duplicates. 
 
 ![xDAC Registration form error](/images/xDAC-Company-registration-form-error.jpg) 
 
+![xDAC Registration form error](/images/xDAC-Company-registration-form-error1.jpg) 
+
+**Error codes**
+
+Code | Text
+----|----|
+1001 | Company name already exists
+1002 | Company Account Name already exists
+1010 | Symbol already exists
+1011 | Initial Supply must be equal to or lower than Total Supply
+1012 | Token price is too low
+1013 | Minimum Initial Capital is 100 XDAC
+1020 | Minimum equity amount is 1 XDAC
+1021 | Equity must be between 1 and 100%
+
 ## 2.5.	Buy Equity in New Company (Step 4)
 
 After data validation, Register Company button will open the Buy Equity sidebar. The sidebar contains a form with:
