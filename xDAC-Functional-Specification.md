@@ -219,6 +219,15 @@ iv_caname | account_name | 10 |
 iv_paname | account_name | 10 | 
 iv_approve | bool | 1 | 
 
+Table ***transactions***
+
+Column | Datatype | Size | Description
+----|----|----|----|
+tx_id | uint64_t | 20 | 
+tx_to | account_name | 12 | 
+tx_from | account_name | 12 | 
+tx_date | std::string | 50 |
+
 ## 2.7.	Deploying Company (Step 6)
 
 Core contract is responsible for deploying company through nodejs service to xDAC network while investment remains on core contract. Deploying process has the following steps:
