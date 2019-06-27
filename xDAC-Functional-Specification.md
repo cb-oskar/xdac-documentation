@@ -226,6 +226,7 @@ Column | Datatype | Size | Description
 tx_id | uint64_t | 20 | Transaction Id
 tx_to | account_name | 12 | Recipient
 tx_from | account_name | 12 | Sender
+tx_status | std::string | 50 | Transaction status [confirmed, pending, refunded, failed]
 tx_date | std::string | 50 | Date ISO8601
 
 ## 2.7.	Deploying Company (Step 6)
