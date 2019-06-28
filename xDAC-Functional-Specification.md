@@ -223,7 +223,7 @@ Table ***transactions***
 
 Column | Datatype | Size | Description
 ----|----|----|----|
-tx_uid | uint64_t | 20 | Uniwue transaction Id
+tx_uid | uint64_t | 20 | Unique transaction Id
 tx_id | uint64_t | 20 | Original transaction Id in case of refund
 tx_to | account_name | 12 | Recipient
 tx_from | account_name | 12 | Sender
